@@ -1,0 +1,112 @@
+.brace-parent {
+  padding: 20px;
+  display: block;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding-bottom:10%;
+}
+
+.el {
+  display: inline-flex;
+  position:absolute;
+  left: 25%;
+  padding-top: 1%;
+}
+.el>div {
+  width: 100px;
+  height: 1px;
+  background: black;
+  margin: 20px 30px;
+  position: relative;
+}
+.el>div:before,
+.el>div:after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-top-left-radius: 200px;
+  border: 1px solid black;
+  border-right: none;
+  border-bottom: none;
+}
+.el>div:after {
+  right: -30px;
+}
+.right:after {
+  transform: rotate(-180deg);
+  top: -30px;
+}
+.left:before {
+  transform: rotate(-90deg);
+  top: -30px;
+  left: -30px;
+}
+.left:after {
+  transform: rotate(90deg);
+}
+.right:before {
+  left: -30px;
+}
+
+.shiny-notification-panel {
+  padding: 20px;
+  width: 350px;
+}
+
+
+/**********/
+.para {
+  max-width: 80%;
+  text-align: center;
+  background-color: aliceblue;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.brace{
+  border: 2px solid #CCC;
+  height: 45px;
+  /* max-width: 50%; */
+  position:relative;
+  border-bottom: 0;
+  border-radius: 25px 25px 0 0;
+  margin-top: 25px;
+}
+.brace.top:after{
+  content: '';
+  position:absolute;
+  left: 50%;
+  width: 50px;
+  height: 55px;
+  margin-top: -27px;
+  margin-left: -25px;
+  background-color: #FFF;
+  background:
+		linear-gradient(135deg, transparent 10px, #CCC 0) top left,
+		linear-gradient(225deg, transparent 10px, #CCC 0) top right,
+		linear-gradient(315deg, transparent 10px, #CCC 0) bottom right,
+		linear-gradient(45deg,  transparent 10px, #CCC 0) bottom left;
+	background-size: 50% 50%;
+	background-repeat: no-repeat;  
+  background-image:
+		radial-gradient(circle at 0 0, transparent 25px, #CCC 26px, #FFF 28px ),
+		radial-gradient(circle at 100% 0, transparent 25px, #CCC 26px, #FFF 28px),none,none; 
+}
+.brace.bottom{  
+  border-top: 0;  
+  border-bottom: 2px solid #CCC;
+  border-radius: 0 0 25px 25px;
+  margin-top: 0;
+}
+
+body {
+  font-size: 16px;
+}
