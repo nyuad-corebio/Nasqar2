@@ -47,15 +47,15 @@ RUN R -e "source('https://raw.githubusercontent.com/aghozlane/shaman/master/Load
 
 # download apps
 RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/yan-cri/DEApp/archive/master.zip', destfile = 'deapp.zip'); unzip(zipfile = 'deapp.zip')"
-RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nasqar/GeneCountMerger/archive/master.zip', destfile = 'genecountmerger.zip'); unzip(zipfile = 'genecountmerger.zip')"
+RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nyuad-corebio/Nasqar2/GeneCountMerger/archive/master.zip', destfile = 'genecountmerger.zip'); unzip(zipfile = 'genecountmerger.zip')"
 RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/aghozlane/shaman/archive/master.zip', destfile = 'shaman.zip'); unzip(zipfile = 'shaman.zip')"
 RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/jminnier/STARTapp/archive/master.zip', destfile = 'startapp.zip'); unzip(zipfile = 'startapp.zip')"
 
 # clusterprofiler apps
 RUN R -e "BiocManager::install(c('clusterProfiler','DOSE','GOplot','enrichplot','pathview'))"
 RUN R -e "BiocManager::install(c('org.Hs.eg.db','org.Mm.eg.db','org.Rn.eg.db','org.Sc.sgd.db','org.Dm.eg.db','org.At.tair.db','org.Dr.eg.db','org.Bt.eg.db','org.Ce.eg.db','org.Gg.eg.db','org.Cf.eg.db','org.Ss.eg.db','org.Mmu.eg.db','org.EcK12.eg.db','org.Xl.eg.db','org.Pt.eg.db','org.Ag.eg.db','org.Pf.plasmo.db','org.EcSakai.eg.db'))"
-RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nasqar/ClusterProfShinyORA/archive/master.zip', destfile = 'clustora.zip'); unzip(zipfile = 'clustora.zip')"
-RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nasqar/ClusterProfShinyGSEA/archive/master.zip', destfile = 'clustprofgsea.zip'); unzip(zipfile = 'clustprofgsea.zip')"
+RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nyuad-corebio/Nasqar2/ClusterProfShinyORA/archive/master.zip', destfile = 'clustora.zip'); unzip(zipfile = 'clustora.zip')"
+RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nyuad-corebio/Nasqar2/ClusterProfShinyGSEA/archive/master.zip', destfile = 'clustprofgsea.zip'); unzip(zipfile = 'clustprofgsea.zip')"
 RUN R -e "install.packages('wordcloud2')"
 
 
@@ -73,7 +73,7 @@ RUN pip install cellbrowser
 RUN pip install umap-learn
 
 # fix datatables issue by downgrading shiny and htmltools
-RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nasqar/GeneCountMerger/archive/master.zip', destfile = 'genecountmerger.zip'); unzip(zipfile = 'genecountmerger.zip')"
+RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nyuad-corebio/Nasqar2/GeneCountMerger/archive/master.zip', destfile = 'genecountmerger.zip'); unzip(zipfile = 'genecountmerger.zip')"
 RUN R -e "devtools::install_github('rstudio/htmltools')"
 RUN R -e "devtools::install_github('rstudio/shiny')"
 RUN R -e "devtools::install_github('daattali/shinycssloaders')"
@@ -92,7 +92,7 @@ RUN git clone https://github.com/ulfelder/practice-projects.git /tmp/covid19
 RUN cp -rf /tmp/covid19/covid19 /srv/shiny-server/covid19app
 RUN R -e "install.packages('NMF')"
 
-RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nasqar/deseq2shiny/archive/master.zip', destfile = 'deseq2shiny.zip'); unzip(zipfile = 'deseq2shiny.zip')"
+RUN R -e "setwd(dir = '/tmp/'); download.file(url = 'https://github.com/nyuad-corebio/Nasqar2/deseq2shiny/archive/master.zip', destfile = 'deseq2shiny.zip'); unzip(zipfile = 'deseq2shiny.zip')"
 RUN R -e "install.packages('janitor')"
 
 # Copy configuration files into the Docker image
