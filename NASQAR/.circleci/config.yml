@@ -1,0 +1,81 @@
+version: 2.1
+
+orbs:
+  docker: circleci/docker@0.5.20
+
+
+jobs:
+  # Build the docker image for nasqar
+  build:
+    executor: docker/machine
+    steps:
+      - checkout
+      - docker/build:
+          image: aymanm/nasqarall
+      - run:
+          command: |
+            echo "Digest is: $(</tmp/digest.txt)"
+  push:
+    executor: docker/docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - docker/check
+      - docker/build:
+          image: aymanm/nasqarall
+      - docker/push:
+          digest-path: /tmp/digest.txt
+          image: aymanm/nasqarall
+  push_with_tags:
+    executor: docker/docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - docker/check
+      - docker/build:
+          image: aymanm/nasqarall
+      - run:
+          command: |
+            cd $HOME/project
+            docker build . -t nasqarall
+            docker tag nasqarall aymanm/nasqarall:latest
+            docker tag nasqarall aymanm/nasqarall:nasqarall
+            docker push aymanm/nasqarall:latest
+            docker push aymanm/nasqarall:nasqarall
+  terraform_apply:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo bash .circleci/install_ci_deps.sh
+            mkdir -p auto-deployment/outputs
+            cd auto-deployment/infrastructure
+            terraform init -input=false
+            terraform refresh -lock=false || echo "unable to refresh"
+            terraform plan -input=false -out=../outputs/tfplan
+            terraform apply -input=false ../outputs/tfplan
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+        filters:
+          branches:
+            ignore: master
+      - push:
+          filters:
+            branches:
+              only: master
+      - push_with_tags:
+          filters:
+            branches:
+              only: master
+      - terraform_apply:
+          requires:
+            - push_with_tags
+          filters:
+            branches:
+              only: master

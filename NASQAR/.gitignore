@@ -1,0 +1,8 @@
+**/.idea
+auto-deployment/infrastructure/.terraform/plugins
+**/.terraform
+**/.terraform.tfstate
+**/.terraform.tfstate.backup
+**/.aws
+**/.aws-kube
+.Rproj.user

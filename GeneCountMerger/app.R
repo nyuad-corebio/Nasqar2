@@ -70,6 +70,7 @@ ui <- tagList(
                                             "Mus_musculus.GRCm38.82",
                                             "Danio_rerio.GRCz10.84",
                                             "Drosophila_melanogaster.BDGP6.81",
+                                            "c_elegans.PRJNA13758.WS283",
                                             "Other (not listed)"
                                         ),
                                         selected = "Homo_sapiens.GRCh38.81"
@@ -643,18 +644,12 @@ server <- function(input, output, session) {
 
         # load("geneid2name.Rda")
 
-        if (input$refGenome == "Homo_sapiens.GRCh38.81") {
-            load("gene_names/Homo_sapiens.GRCh38.81.Rda")
-        } else if (input$refGenome == "Homo_sapiens.GRCh38.84") {
-            load("gene_names/Homo_sapiens.GRCh38.84.Rda")
-        } else if (input$refGenome == "Mus_musculus.GRCm38.82") {
-            load("gene_names/Mus_musculus.GRCm38.82.Rda")
-        } else if (input$refGenome == "Danio_rerio.GRCz10.84") {
-            load("gene_names/Danio_rerio.GRCz10.84.Rda")
-        } else if (input$refGenome == "Drosophila_melanogaster.BDGP6.81") {
-            load("gene_names/Drosophila_melanogaster.BDGP6.81.Rda")
+        rda_file_path <- paste0("www/gene_names/", input$refGenome, ".Rda" )
+
+        if (input$refGenome == "Other (not listed)") {
+             geneid2name <- read.csv2(input$gtfMappingFile$datapath, sep = ",", colClasses = c("character", "character"))
         } else {
-            geneid2name <- read.csv2(input$gtfMappingFile$datapath, sep = ",", colClasses = c("character", "character"))
+            load(rda_file_path)
         }
 
         #   ids<-bitr(ensNames, fromType = "ENSEMBL", toType = "SYMBOL", OrgDb="org.Ce.eg.db")
