@@ -56,7 +56,7 @@ tabItem(
         hr(),
         textOutput(outputId = "message"),
         conditionalPanel(
-            condition = "output.panelStatus",
+            condition = "output.panelStatus && input.select_avo_de_venn_files.length > 1",
             tags$div(
                 class = "BoxArea2",
                 column(
@@ -102,6 +102,7 @@ tabItem(
                     12,
                     DTOutput("venn_expression_result")
                 ),
+                hr(),
                 column(
                     12,
                     conditionalPanel(
@@ -125,21 +126,40 @@ tabItem(
                     DTOutput("heatmap_matrix_table")
                     # plotOutput("heatMap1")htmlOutput("info1"),
                 ),
-                column(
-                    12,
-                    conditionalPanel(
-                        condition = "input.gene_alias=='included' && output.selected_genes",
-                        wellPanel(
-                            radioButtons("venn_sel_gene_type", "Gene enrichment by",
-                                c(
-                                    "gene.id" = "gene.id",
-                                    "gene.name" = "gene.name"
-                                ),
-                                selected = "gene.id"
-                            )
+                hr(),
+                column(12,
+                    conditionalPanel(condition = "output.selected_genes",
+                        column(
+                            12,
+                            conditionalPanel(
+                                condition = "input.gene_alias=='included'",
+                                column(4,
+                                    radioButtons("venn_sel_gene_type", "Gene list by",
+                                            c(
+                                                "gene.id" = "gene.id",
+                                                "gene.name" = "gene.name"
+                                            ),
+                                            selected = "gene.id"
+                                    )
+                                )
+                            ),
+                            column(4,
+                                radioButtons("venn_input_genes_sep", "Genes separted by",
+                                    c(
+                                        "Comma" = ",",
+                                        "Space" = " "
+                                    ),
+                                    selected = "Space"
+                                )
+                            ),
+                            
+                        ),
+                        column(12,
+                            textAreaInput("venn_gene_list", 'GeneList', rows = 3, width="100%")
                         )
                     )
                 ),
+      
                 column(
                     4,
                     conditionalPanel(

@@ -1,14 +1,13 @@
-  encryptUrlParam = function (paramStr)
-  {
+encryptUrlParam <- function(paramStr) {
     # pubkeyHex <- read_file("public.txt")
-    pubkeyHex <- '42b3781d6907cd426b9c05cac7155cce15bb9385a602716f619529485dab6c28'
-    pubkey = hex2bin(pubkeyHex)
-    
+    pubkeyHex <- "42b3781d6907cd426b9c05cac7155cce15bb9385a602716f619529485dab6c28"
+    pubkey <- hex2bin(pubkeyHex)
+
     msg <- serialize(paramStr, NULL)
     ciphertext <- simple_encrypt(msg, pubkey)
-    
+
     bin2hex(ciphertext)
-  }
+}
 
 
 expression_set_data <- reactive({
@@ -42,7 +41,7 @@ heatmap_matrix <- reactive({
 
 
     genes <- expression_set_data()
-    
+
 
     common_genes <- genes[[1]]
 
@@ -115,12 +114,12 @@ click_action <- function(df, output) {
 
 
 output$selected_genes <- reactive({
-    print('selected_genes')
+    print("selected_genes")
     print(myValues$selected_genes)
     return(myValues$selected_genes > 1)
 })
 
-outputOptions(output, 'selected_genes', suspendWhenHidden=FALSE)
+outputOptions(output, "selected_genes", suspendWhenHidden = FALSE)
 
 
 
@@ -133,72 +132,76 @@ brush_action <- function(df, output) {
     column_index <- unique(unlist(df$column_index))
     matrix <- isolate(heatmap_matrix())
 
-    
-    
+
+
     m <- matrix[row_index, column_index, drop = FALSE]
     selected_matrix$matrix <- m
-    output[["heatmap_matrix_table"]] <-  DT::renderDataTable({
-           gene.id <- rownames(m)
+    output[["heatmap_matrix_table"]] <- DT::renderDataTable(
+        {
+            gene.id <- rownames(m)
             genes <- gene.id
 
-          
 
-              if(input$gene_alias == 'included'){
-                genes <- myValues$genenames[gene.id,]
+
+            if (input$gene_alias == "included") {
+                genes <- myValues$genenames[gene.id, ]
                 gene.name <- genes
-                m <- cbind(m, gene.name )
-             }
+                m <- cbind(m, gene.name)
+            }
 
-                  if(input$venn_sel_gene_type == 'gene.id'){
+            if (input$venn_sel_gene_type == "gene.id") {
                 genes <- gene.id
-                    
             }
             isolate({
-            myValues$selected_genes <- myValues$selected_genes + 1
-            print('myValues$selected_genes')
-            print(myValues$selected_genes)
+                myValues$selected_genes <- myValues$selected_genes + 1
+                print("myValues$selected_genes")
+                print(myValues$selected_genes)
             })
-            
+
+            updateTextAreaInput(session, "venn_gene_list", value = paste(genes, collapse = input$venn_input_genes_sep))
+
             return(m)
-        },options = list(scrollX = TRUE, pageLength = 50))
-    
+        },
+        options = list(scrollX = TRUE, pageLength = 50)
+    )
+
     #  renderUI({
-      
-        
-         
-           
-        # print(genes)
-        # fileUrl <- UUIDgenerate()
-        # fileUrl <- paste0(tempdir(),'/', fileUrl,'.csv')
-    
 
-        # output[["info2"]] <- renderUI({
-        #     fileUrl <- UUIDgenerate()
-        #     fileUrl <- paste0(tempdir(),'/', fileUrl,'.csv')
-            
-        #         # common_genes<-myValues$genenames[common_genes,]
-        
-        #     write.csv(genes, file = fileUrl, row.names = FALSE)
-         
 
-        #     output[["enrichGo"]] <-   renderUI({
 
-        #         tags$div(class = "BoxArea3", style = "text-align: center;",
-        #                 p(strong("ClusterProfShinyORA")),
-        #                 a("goEnrich", href=paste0("/ClusterProfShinyORA?gene_names=", encryptUrlParam(fileUrl)), class = "btn btn-success", target = "_blank", style = "width: 100%;"))
-        #     }) 
 
-        #     return(textInput("genes", "Selected Genes", genes))
-        # })
-        #  if (!is.null(df)) {
-           
-        # return(HTML(kable_styling(kbl(m, digits = 2, format = "html"), full_width = FALSE, position = "left")))
-        # }
+    # print(genes)
+    # fileUrl <- UUIDgenerate()
+    # fileUrl <- paste0(tempdir(),'/', fileUrl,'.csv')
+
+
+    # output[["info2"]] <- renderUI({
+    #     fileUrl <- UUIDgenerate()
+    #     fileUrl <- paste0(tempdir(),'/', fileUrl,'.csv')
+
+    #         # common_genes<-myValues$genenames[common_genes,]
+
+    #     write.csv(genes, file = fileUrl, row.names = FALSE)
+
+
+    #     output[["enrichGo"]] <-   renderUI({
+
+    #         tags$div(class = "BoxArea3", style = "text-align: center;",
+    #                 p(strong("ClusterProfShinyORA")),
+    #                 a("goEnrich", href=paste0("/ClusterProfShinyORA?gene_names=", encryptUrlParam(fileUrl)), class = "btn btn-success", target = "_blank", style = "width: 100%;"))
+    #     })
+
+    #     return(textInput("genes", "Selected Genes", genes))
+    # })
+    #  if (!is.null(df)) {
+
+    # return(HTML(kable_styling(kbl(m, digits = 2, format = "html"), full_width = FALSE, position = "left")))
+    # }
     #     return(DT::renderDataTable({
     #        gene.id <- rownames(m)
     #         genes <- gene.id
 
-          
+
 
     #           if(input$gene_alias == 'included'){
     #             genes <- myValues$genenames[gene.id,]
@@ -208,15 +211,15 @@ brush_action <- function(df, output) {
 
     #               if(input$venn_sel_gene_type == 'gene.id'){
     #             genes <- gene.id
-                    
+
     #         }
 
     #         return(m)
     #     },options = list(scrollX = TRUE, pageLength = 50)))
     # })
-    
-    #DT::renderDataTable({
-           
+
+    # DT::renderDataTable({
+
     #         m
     #     },options = list(scrollX = TRUE, pageLength = 50))
 
@@ -224,26 +227,24 @@ brush_action <- function(df, output) {
 
     # output[["info"]] <- renderUI({
     #     if (!is.null(df)) {
-            
-           
+
+
     #         HTML(kable_styling(kbl(m, digits = 2, format = "html"), full_width = FALSE, position = "left"))
     #     }
     # })
     # output[["info1"]] <- renderUI({
     #     DT::renderDataTable({
-           
+
     #         m
     #     })
     # })
 
-    
 
 
-    
+
+
     # print('fileUrl')
     # print(fileUrl)
-
-   
 }
 
 
@@ -372,115 +373,116 @@ outputOptions(output, "panelStatus", suspendWhenHidden = FALSE)
 
 
 observeEvent(input$evaluateExpression, {
-    output$venn_expression_result <- renderDataTable({
-        print('venn_expression_result')
-        matrix <- heatmap_matrix()
-        print('matrix')
-        print(matrix)
-        print(nrow(matrix))
-        req(nrow(matrix) > 0)
-        # ht <- Heatmap(matrix, show_row_names = FALSE, show_column_names = FALSE)
-        ht <- Heatmap(matrix)
+    output$venn_expression_result <- renderDataTable(
+        {
+            print("venn_expression_result")
+            matrix <- heatmap_matrix()
+            print("matrix")
+            print(matrix)
+            print(nrow(matrix))
+            req(nrow(matrix) > 0)
+            # ht <- Heatmap(matrix, show_row_names = FALSE, show_column_names = FALSE)
+            ht <- Heatmap(matrix)
 
-        ht <- draw(ht)
-
-
-        req(length(isolate(input$select_avo_de_venn_files)) > 1)
-
-        req(isolate(input$venn_set_expression_input))
-
-        genes <- expression_set_data()
-        req(length(genes[1]) > 0)
-        print('makeInteractiveComplexHeatmap start')
-        makeInteractiveComplexHeatmap(input, output, session, ht,
-            click_action = click_action, brush_action = brush_action
-        )
-        print('makeInteractiveComplexHeatmap stop')
+            ht <- draw(ht)
 
 
+            req(length(isolate(input$select_avo_de_venn_files)) > 1)
 
-        values <- list()
-        common_genes <- genes[[1]]
-        values[["gene.id"]] <- common_genes
-        
+            req(isolate(input$venn_set_expression_input))
 
-        if(input$gene_alias == 'included'){
-            values[["gene.name"]] <-  myValues$genenames[common_genes,]
-           
-        }
+            genes <- expression_set_data()
+            req(length(genes[1]) > 0)
+            print("makeInteractiveComplexHeatmap start")
+            makeInteractiveComplexHeatmap(input, output, session, ht,
+                click_action = click_action, brush_action = brush_action
+            )
+            print("makeInteractiveComplexHeatmap stop")
 
-        tagnames <- LETTERS[1:length(isolate(input$select_avo_de_venn_files))]
-        print(tagnames)
-        df_list <- list()
-        j <- 1
-        for (f in names(filelist$file_list)) {
-            print(f)
-            print(filelist$file_list[[f]])
-            df <- read.csv(filelist$file_list[[f]])
-            df[is.na(df)] <- 0
 
-            # df <- na.omit(df)
-            df <- df[df$X %in% common_genes, ]
-            # df <- na.omit(df)
-            print(dim(df))
-            values[[paste0(tagnames[j], ".logFC")]] <- df$log2FoldChange
-            j <- j + 1
-        }
 
-        #
-        #   i <- 1
-        #   for(avo_file in input$avo_de_file$name){
-        #     #print(input$avo_de_file$datapath)
-        #     df <-  NULL
-        #
-        #     if (f == avo_file){
-        #       df <- read.csv(input$avo_de_file$datapath[[i]])
-        #       df <-  df[df$X %in% common_genes,]
-        #       values[[paste0(tagnames[j],'.logFC')]]  <- df$log2FoldChange
-        #
-        #       j<-j+1
-        #       break
-        #
-        #     }
-        #     i <- i + 1
-        #   }
-        # }
+            values <- list()
+            common_genes <- genes[[1]]
+            values[["gene.id"]] <- common_genes
 
-        df <- data.frame(values)
 
-        print(colnames(df))
+            if (input$gene_alias == "included") {
+                values[["gene.name"]] <- myValues$genenames[common_genes, ]
+            }
 
-      
-        # wormBaseId <- df$WormBaseId
-        # ids<-bitr(wormBaseId, fromType = "ENSEMBL", toType = "SYMBOL", OrgDb="org.Ce.eg.db")
-        # ids$WormBaseId <- ids$ENSEMBL
-        #
-        # df<-merge(df, ids[, c("WormBaseId", "SYMBOL")], by="WormBaseId",all.x = TRUE)
-        #
-        #
-        # incProgress(0.6, detail = paste("fetching gene ENTREZID"))
-        #
-        # ids<-bitr(wormBaseId, fromType = "ENSEMBL", toType = "GENENAME", OrgDb="org.Ce.eg.db")
-        # ids$WormBaseId <- ids$ENSEMBL
-        # df<-merge(df, ids[, c("WormBaseId", "GENENAME")], by="WormBaseId",all.x = TRUE)
-        #
-        # incProgress(0.6, detail = paste("fetching gene KEGG ID"))
-        #
-        # ids<-bitr(wormBaseId, fromType = "ENSEMBL", toType = "ENTREZID", OrgDb="org.Ce.eg.db")
-        # ids$WormBaseId <- ids$ENSEMBL
-        # df<-merge(df, ids[, c("WormBaseId", "ENTREZID")], by="WormBaseId",all.x = TRUE)
-        #
-        # kegg_ids <- bitr_kegg(ids$ENTREZID, fromType="ncbi-geneid", toType='kegg', organism='cel')
-        # kegg_ids$ENTREZID<-kegg_ids$`ncbi-geneid`
-        #
-        # df<-merge(df, kegg_ids[, c("ENTREZID", "kegg")], by="ENTREZID",all.x = TRUE)
-        DT::datatable(df)
-    },options = list(scrollX = TRUE, pageLength = 5))
+            tagnames <- LETTERS[1:length(isolate(input$select_avo_de_venn_files))]
+            print(tagnames)
+            df_list <- list()
+            j <- 1
+            for (f in names(filelist$file_list)) {
+                print(f)
+                print(filelist$file_list[[f]])
+                df <- read.csv(filelist$file_list[[f]])
+                df[is.na(df)] <- 0
+
+                # df <- na.omit(df)
+                df <- df[df$X %in% common_genes, ]
+                # df <- na.omit(df)
+                print(dim(df))
+                values[[paste0(tagnames[j], ".logFC")]] <- df$log2FoldChange
+                j <- j + 1
+            }
+
+            #
+            #   i <- 1
+            #   for(avo_file in input$avo_de_file$name){
+            #     #print(input$avo_de_file$datapath)
+            #     df <-  NULL
+            #
+            #     if (f == avo_file){
+            #       df <- read.csv(input$avo_de_file$datapath[[i]])
+            #       df <-  df[df$X %in% common_genes,]
+            #       values[[paste0(tagnames[j],'.logFC')]]  <- df$log2FoldChange
+            #
+            #       j<-j+1
+            #       break
+            #
+            #     }
+            #     i <- i + 1
+            #   }
+            # }
+
+            df <- data.frame(values)
+
+            print(colnames(df))
+
+
+            # wormBaseId <- df$WormBaseId
+            # ids<-bitr(wormBaseId, fromType = "ENSEMBL", toType = "SYMBOL", OrgDb="org.Ce.eg.db")
+            # ids$WormBaseId <- ids$ENSEMBL
+            #
+            # df<-merge(df, ids[, c("WormBaseId", "SYMBOL")], by="WormBaseId",all.x = TRUE)
+            #
+            #
+            # incProgress(0.6, detail = paste("fetching gene ENTREZID"))
+            #
+            # ids<-bitr(wormBaseId, fromType = "ENSEMBL", toType = "GENENAME", OrgDb="org.Ce.eg.db")
+            # ids$WormBaseId <- ids$ENSEMBL
+            # df<-merge(df, ids[, c("WormBaseId", "GENENAME")], by="WormBaseId",all.x = TRUE)
+            #
+            # incProgress(0.6, detail = paste("fetching gene KEGG ID"))
+            #
+            # ids<-bitr(wormBaseId, fromType = "ENSEMBL", toType = "ENTREZID", OrgDb="org.Ce.eg.db")
+            # ids$WormBaseId <- ids$ENSEMBL
+            # df<-merge(df, ids[, c("WormBaseId", "ENTREZID")], by="WormBaseId",all.x = TRUE)
+            #
+            # kegg_ids <- bitr_kegg(ids$ENTREZID, fromType="ncbi-geneid", toType='kegg', organism='cel')
+            # kegg_ids$ENTREZID<-kegg_ids$`ncbi-geneid`
+            #
+            # df<-merge(df, kegg_ids[, c("ENTREZID", "kegg")], by="ENTREZID",all.x = TRUE)
+            DT::datatable(df)
+        },
+        options = list(scrollX = TRUE, pageLength = 5)
+    )
     output$scaterplot <- renderPlot({
+        print("scaterplot")
+        venn_significance_threshold <- isolate(input$venn_significance_threshold)
 
-        print('scaterplot')
-         venn_significance_threshold <- isolate(input$venn_significance_threshold)
-        
         venn_log_fold_change_threshold <- isolate(input$venn_log_fold_change_threshold)
         req(length(input$select_avo_de_venn_files) > 1)
 
@@ -500,7 +502,7 @@ observeEvent(input$evaluateExpression, {
             df[is.na(df)] <- 0
             df <- df[df$X %in% common_genes, ]
             # df <- df[ df$padj > 0, ]
-             df <- df[(df$padj < 1 / 10^as.numeric(venn_significance_threshold)) & abs(df$log2FoldChange) > as.numeric(venn_log_fold_change_threshold), ]
+            df <- df[(df$padj < 1 / 10^as.numeric(venn_significance_threshold)) & abs(df$log2FoldChange) > as.numeric(venn_log_fold_change_threshold), ]
             df_list[[f]] <- df
         }
 
@@ -561,8 +563,7 @@ observeEvent(input$evaluateExpression, {
 
 
     output$heatMap1 <- renderPlot({
-
-        print('heatMap1')
+        print("heatMap1")
         req(input$venn_set_expression_input)
 
         req(length(input$select_avo_de_venn_files) > 1)
@@ -616,9 +617,8 @@ observeEvent(input$evaluateExpression, {
         colnames(d) <- LETTERS[1:length(df_list)]
         # print('heatmap plot')
 
-        if(input$gene_alias == 'included' && input$venn_sel_gene_type == 'gene.name'){
+        if (input$gene_alias == "included" && input$venn_sel_gene_type == "gene.name") {
             common_genes <- myValues$genenames[common_genes]
-        
         }
 
         rownames(d) <- common_genes
@@ -643,7 +643,7 @@ observeEvent(input$evaluateExpression, {
 
 
 avo_venn_frames_data <- reactive({
-    print('avo_venn_frames_data')
+    print("avo_venn_frames_data")
     input$plotVenn
 
     # req(filelist$file_list)
@@ -654,7 +654,7 @@ avo_venn_frames_data <- reactive({
     req(length(select_avo_de_venn_files) > 1)
 
 
-  
+
 
     # print(input$avo_de_file)
     df_list <- c()
@@ -703,54 +703,55 @@ avo_venn_frames_data <- reactive({
 
 generateBinaryMatrix <- function(set_names) {
     bits <- length(set_names)
-  values <- c(0, 1)
-  combinations <- expand.grid(replicate(bits, values, simplify = FALSE))
-  colnames(combinations)<-set_names
-  print(combinations)
-  sortedCombinations <- combinations[do.call(order, combinations), ]
-  rownames(sortedCombinations) <- apply(sortedCombinations, 1, function(row) {
-    selectedColumns <- colnames(sortedCombinations)[row == 1]
-    unselectedColumns <- colnames(sortedCombinations)[row == 0]
-    if(length(selectedColumns) != 0){
-      if(length(unselectedColumns) == 0){
-        v<-paste0(selectedColumns, collapse = "*")
-      } else {
-        v <- paste0(c(paste0('(',paste0(selectedColumns, collapse = "*"),')'),paste0('(',paste0(unselectedColumns, collapse = "+"),')')), collapse="-" )
-      }
-      
-    } else {
-      v <-""
-    }
-    
-    print(v)
-    return(v)
-  })
-  return(sortedCombinations)
+    values <- c(0, 1)
+    combinations <- expand.grid(replicate(bits, values, simplify = FALSE))
+    colnames(combinations) <- set_names
+    print(combinations)
+    sortedCombinations <- combinations[do.call(order, combinations), ]
+    rownames(sortedCombinations) <- apply(sortedCombinations, 1, function(row) {
+        selectedColumns <- colnames(sortedCombinations)[row == 1]
+        unselectedColumns <- colnames(sortedCombinations)[row == 0]
+        if (length(selectedColumns) != 0) {
+            if (length(unselectedColumns) == 0) {
+                v <- paste0(selectedColumns, collapse = "*")
+            } else {
+                v <- paste0(c(paste0("(", paste0(selectedColumns, collapse = "*"), ")"), paste0("(", paste0(unselectedColumns, collapse = "+"), ")")), collapse = "-")
+            }
+        } else {
+            v <- ""
+        }
+
+        print(v)
+        return(v)
+    })
+    return(sortedCombinations)
 }
 
-observeEvent(input$select_expression,{
-
+observeEvent(input$select_expression, {
     updateTextInput(session, "venn_set_expression_input", value = input$select_expression)
-
 })
 
-output$gene_data_sets <- DT::renderDataTable({
-    print('gene_data_sets')
-    d <- avo_venn_frames_data()
+output$gene_data_sets <- DT::renderDataTable(
+    {
+        print("gene_data_sets")
+        d <- avo_venn_frames_data()
 
-    df <- data.frame("File Name" = d[[2]], "Label" = names(d[[1]]))
-    set_names <- names(d[[1]])
-    
-    combinations <- generateBinaryMatrix(set_names)
-    set_expressions <- rownames(combinations[-1,])
-     updateSelectInput(session,'select_expression',
-                       choices= set_expressions,
-                    selected = set_expressions[length(set_expressions)][])
+        df <- data.frame("File Name" = d[[2]], "Label" = names(d[[1]]))
+        set_names <- names(d[[1]])
 
-    
+        combinations <- generateBinaryMatrix(set_names)
+        set_expressions <- rownames(combinations[-1, ])
+        updateSelectInput(session, "select_expression",
+            choices = set_expressions,
+            selected = set_expressions[length(set_expressions)][]
+        )
 
-    DT::datatable(df)
-},options = list(scrollX = TRUE))
+
+
+        DT::datatable(df)
+    },
+    options = list(scrollX = TRUE)
+)
 
 
 

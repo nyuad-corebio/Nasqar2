@@ -1302,7 +1302,7 @@ body <- dashboardBody(
                         solidHeader = T, status = "success",
                         plotOutput("decomp"),
                         br(),
-                        p("Gene lists results can be downloaded here:",
+                        p("Gene list can be downloaded here:",
                             style = "font-weight: bold"
                         ),
                         downloadButton("overlap_genes_download",

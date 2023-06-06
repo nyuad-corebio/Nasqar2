@@ -86,7 +86,7 @@ tabItem(
                                  conditionalPanel(condition = "input.gene_alias=='included'",
                                 column(4,
                                    
-                                    radioButtons("volcano_sel_gene_type", "Gene enrichment by",
+                                    radioButtons("volcano_sel_gene_type", "Gene list by",
                                         c(
                                             "gene.id" = "gene.id",
                                             "gene.name" = "gene.name"
@@ -96,7 +96,7 @@ tabItem(
                                     )
                                 )),
                                 column(4,
-                                    radioButtons("volcano_input_genes_sep", "Gene separted by",
+                                    radioButtons("volcano_input_genes_sep", "Genes separted by",
                                         c(
                                             "Comma" = ",",
                                             "Space" = " "
