@@ -63,7 +63,7 @@ ui <- tagList(
             HTML(
                 '
         <p align="center" width="4">Core Bioinformatics, Center for Genomics and Systems Biology, NYU Abu Dhabi</p>
-        <p align="center" width="4">Github: <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/ClusterProfShiny/">https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/ClusterProfShiny/</a></p>
+        <p align="center" width="4">Github: <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main//ClusterProfShiny/">https://github.com/nyuad-corebio/Nasqar2/tree/main//ClusterProfShiny/</a></p>
         <p align="center" width="4">Maintained by: <a href="mailto:nabil.rahiman@nyu.edu">Nabil Rahiman</a> </p>
         <p align="center" width="4">Using ClusterProfiler</p>
         <p align="center" width="4"><strong>Acknowledgements: </strong></p>

@@ -77,7 +77,7 @@ ui <- tagList(
                                     ),
                                     conditionalPanel(
                                         "input.refGenome=='Other (not listed)'",
-                                        a(href = "https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/GeneidToNameFromGtf", "Click here if you have a .gtf file for your genome", target = "_blank"),
+                                        a(href = "https://github.com/nyuad-corebio/Nasqar2/tree/main//GeneidToNameFromGtf", "Click here if you have a .gtf file for your genome", target = "_blank"),
                                         fileInput("gtfMappingFile", "Upload gene/id lookup table (.csv)",
                                             accept = c(
                                                 "text/csv",
@@ -132,7 +132,7 @@ ui <- tagList(
                                             strong("Convert ensembl gene IDs to gene names"),
                                             tags$ul(
                                                 tags$li("Option to choose from available genome/versions"),
-                                                tags$li("If genome/version is not available in the options and you have a ", a(target = "_blank", href = "https://asia.ensembl.org/info/website/upload/gff.html", ".gtf"), " file for your genome", a(href = "https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/GeneidToNameFromGtf", "follow these instructions."))
+                                                tags$li("If genome/version is not available in the options and you have a ", a(target = "_blank", href = "https://asia.ensembl.org/info/website/upload/gff.html", ".gtf"), " file for your genome", a(href = "https://github.com/nyuad-corebio/Nasqar2/tree/main//GeneidToNameFromGtf", "follow these instructions."))
                                             )
                                         ),
                                         tags$li("Option to add ", strong("pseudocounts (+1)")),
