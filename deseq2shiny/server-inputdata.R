@@ -65,7 +65,7 @@ inputFileReactive <- reactive({
         # print('ask inputdata')
         shinyjs::show(selector = "a[data-value=\"inputdata\"]")
         shinyjs::disable("datafile")
-        js$collapse("uploadbox")
+        # js$collapse("uploadbox")
     } else if (input$data_file_type == "countsFile") {
         inFile <- input$datafile
         if (is.null(inFile)) {

@@ -6,18 +6,18 @@
 - This repo contains the source code for the NASQAR homepage http://nasqar.abudhabi.nyu.edu/
 - Below are links to github repos for the apps contained in NASQAR
 - The Dockerfile can be used to build the latest image of NASQAR
-- The latest Docker image for nasqar is available via DockerHub https://hub.docker.com/r/aymanm/nasqarall
+- The latest Docker image for nasqar is available via DockerHub https://hub.docker.com/r/nyuadcorebio/nasqarall
 
 ### Run using docker (Recommended):
 Make sure Docker (version >= 17.03.0-ce) is installed.
 ```
-docker run -p 80:80 aymanm/nasqarall:nasqar
+docker run -p 80:80 nyuadcorebio/nasqarall:nasqar
 ```
 This will run on port 80
 
 To run on a different port:
 ```
-docker run -p 8083:80 aymanm/nasqarall:nasqar
+docker run -p 8083:80 nyuadcorebio/nasqarall:nasqar
 ```
 This will run on port 8083
 
