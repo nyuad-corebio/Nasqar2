@@ -24,12 +24,12 @@ This will run on port 8083
 ---
 ### Apps included in NASQAR
 NASQAR Custom apps:
-- [SeuratV3Wizard (scRNA)](https://github.com/nyuad-corebio/Nasqar2/seuratv3wizard)
-- [SeuratWizard (scRNA)](https://github.com/nyuad-corebio/Nasqar2/SeuratWizard)
-- [deseq2shiny (Bulk RNA)](https://github.com/nyuad-corebio/Nasqar2/deseq2shiny)
-- [GeneCountMerger (Pre-processing)](https://github.com/nyuad-corebio/Nasqar2/GeneCountMerger)
-- [ClusterProfShinyGSEA (Enrichment)](https://github.com/nyuad-corebio/Nasqar2/ClusterProfShinyGSEA)
-- [ClusterProfShinyORA (Enrichment)](https://github.com/nyuad-corebio/Nasqar2/ClusterProfShinyORA)
+- [SeuratV3Wizard (scRNA)](https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/seuratv3wizard)
+- [SeuratWizard (scRNA)](https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/SeuratWizard)
+- [deseq2shiny (Bulk RNA)](https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/deseq2shiny)
+- [GeneCountMerger (Pre-processing)](https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/GeneCountMerger)
+- [ClusterProfShinyGSEA (Enrichment)](https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/ClusterProfShinyGSEA)
+- [ClusterProfShinyORA (Enrichment)](https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/ClusterProfShinyORA)
 
 Other open-source apps:
 - [STARTapp](https://github.com/jminnier/STARTapp)

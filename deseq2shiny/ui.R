@@ -123,9 +123,9 @@ ui <- tagList(
             wellPanel(
                 HTML('
                <p align="center" width="4">Core Bioinformatics, Center for Genomics and Systems Biology, NYU Abu Dhabi</p>
-      <p align="center" width="4">Github: <a href="https://github.com/nyuad-corebio/Nasqar2/deseq2shiny/">https://github.com/nyuad-corebio/Nasqar2/deseq2shiny/</a></p>
+      <p align="center" width="4">Github: <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/deseq2shiny/">https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/deseq2shiny/</a></p>
                <p align="center" width="4">Maintained by: <a href="mailto:nr83@nyu.edu">Nabil Rahiman</a> </p>
-                <p align="center" width="4">Issues / Features requests: <a href="https://github.com/nyuad-corebio/Nasqar2/deseq2shiny/issues" target="_blank">https://github.com/nyuad-corebio/Nasqar2/deseq2shiny/issues</a></p>
+                <p align="center" width="4">Issues / Features requests: <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/deseq2shiny/issues" target="_blank">https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2/deseq2shiny/issues</a></p>
                <p align="center" width="4">Using <a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html" target="_blank">DESeq2</a> version 1.24.0</p>
                <p align="center" width="4">Copyright (C) 2019, code licensed under GPLv3</p>')
             ),
