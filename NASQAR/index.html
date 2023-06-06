@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link REL="SHORTCUT ICON" HREF="favicon.ico" />
 
-        <title>NASQAR: A web-based portal for High-throughput data analysis & visualization</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link REL="SHORTCUT ICON" HREF="favicon.ico" />
 
-         <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/buttons.css">
-        
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="css/imagehover.min.css">
-        <link rel="stylesheet" href="css/style4.css">
-        
+    <title>NASQAR: A web-based portal for High-throughput data analysis & visualization</title>
 
-        <style type="text/css">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/buttons.css">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/imagehover.min.css">
+    <link rel="stylesheet" href="css/style4.css">
+
+
+    <style type="text/css">
         p {
             color: black;
             /*font-size: 1.3em;*/
 
         }
+
         .navbar-brand1 {
             position: relative;
             background: url(img/cgsbLogo.png);
@@ -32,6 +34,7 @@
             background-size: contain;
             background-repeat: no-repeat;
         }
+
         .navbar-brand2 {
             position: relative;
             background: url(img/nasqar_logobig.png);
@@ -41,636 +44,729 @@
             background-size: contain;
             background-repeat: no-repeat;
         }
-        .clearBoth{ clear:both;} 
-        .button-color{background-color:#dee2f5}
-        </style>
-    </head>
-    <body>
+
+        .clearBoth {
+            clear: both;
+        }
+
+        .button-color {
+            background-color: #dee2f5
+        }
+    </style>
+</head>
+
+<body>
 
 
 
-        <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>NASQAR</h3>
-                    <strong>NASQAR</strong>
-                </div>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>NASQAR</h3>
+                <strong>NASQAR</strong>
+            </div>
 
-                <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href="#">
-                            <!--<i class="glyphicon glyphicon-home"></i>-->
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#dataprivacy">
-                            <!--<i class="glyphicon glyphicon-home"></i>-->
-                            Data Privacy
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#installrun">
-                            Run/Install
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#apps">
-                            Online Apps
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#citation">
-                            Citation
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#appSubmenu" data-toggle="collapse" aria-expanded="true">
-                            <!--<i class="glyphicon glyphicon-home"></i>-->
-                            Categories/Details
-                        </a>
-                        <ul class="collapse in list-unstyled" id="appSubmenu">
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#">
+                        <!--<i class="glyphicon glyphicon-home"></i>-->
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#dataprivacy">
+                        <!--<i class="glyphicon glyphicon-home"></i>-->
+                        Data Privacy
+                    </a>
+                </li>
+                <li>
+                    <a href="#installrun">
+                        Run/Install
+                    </a>
+                </li>
+                <li>
+                    <a href="#apps">
+                        Online Apps
+                    </a>
+                </li>
+                <li>
+                    <a href="#citation">
+                        Citation
+                    </a>
+                </li>
+                <li>
+                    <a href="#appSubmenu" data-toggle="collapse" aria-expanded="true">
+                        <!--<i class="glyphicon glyphicon-home"></i>-->
+                        Categories/Details
+                    </a>
+                    <ul class="collapse in list-unstyled" id="appSubmenu">
 
-                            <li>
-                                <a href="#preproc">
-                                    <i class="glyphicon glyphicon-briefcase"></i>
-                                    Pre-processing
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#rnaseq">
-                                    <i class="glyphicon glyphicon-link"></i>
-                                    RNAseq
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#enrichment">
-                                    <i class="glyphicon glyphicon-link"></i>
-                                    Enrichment
-                                </a>
-                            </li>
-                            <!-- <li>
+                        <li>
+                            <a href="#preproc">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                                Pre-processing
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#rnaseq">
+                                <i class="glyphicon glyphicon-link"></i>
+                                RNAseq
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#enrichment">
+                                <i class="glyphicon glyphicon-link"></i>
+                                Enrichment
+                            </a>
+                        </li>
+                        <!-- <li>
                                 <a href="#variant">
                                     <i class="glyphicon glyphicon-paperclip"></i>
                                     Variant Disc
                                 </a>
                             </li> -->
 
-                        </ul>
-                    </li>
+                    </ul>
+                </li>
 
 
 
 
-                    
-                </ul>
 
-            </nav>
+            </ul>
 
-            <!-- Page Content Holder -->
-            <div id="content">
+        </nav>
 
-                <nav class="navbar navbar-default navbar-backgroundimg">
-                    <div class="container-fluid">
+        <!-- Page Content Holder -->
+        <div id="content">
 
-                        <div class="navbar-header navbar-right">
-                            <!--<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+            <nav class="navbar navbar-default navbar-backgroundimg">
+                <div class="container-fluid">
+
+                    <div class="navbar-header navbar-right">
+                        <!--<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                 <i class="glyphicon glyphicon-align-left"></i>
                                 <span>Toggle Sidebar</span>
                             </button>-->
-                            <span class="navbar-brand1" href="#">
-                                <!--<img alt="Brand" src="cgsbLogo.png">-->
-                            </span>
-                        </div>
-                        <div class="navbar-header navbar-left">
-                            <span class="navbar-brand2" href="#">
-                                <!--<img alt="Brand" src="cgsbLogo.png">-->
-                            </span>
-                        </div>
-
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <h2 class="navbar-heading">
-                                    <strong class="abv-color">N</strong>ucleic <strong class="abv-color">A</strong>cid <strong class="abv-color">S</strong>e<strong class="abv-color">Q</strong>uence <strong class="abv-color">A</strong>nalysis <strong class="abv-color">R</strong>esource (<strong  class="abv-color">NASQAR</strong>)
-                            </h2>
-
-                            <h4 class="navbar-subheading">
-                                 A web-based platform for High-throughput sequencing data analysis and visualization
-                            </h4>
-                        </div>
-
-                        
+                        <span class="navbar-brand1" href="#">
+                            <!--<img alt="Brand" src="cgsbLogo.png">-->
+                        </span>
                     </div>
-                </nav>
+                    <div class="navbar-header navbar-left">
+                        <span class="navbar-brand2" href="#">
+                            <!--<img alt="Brand" src="cgsbLogo.png">-->
+                        </span>
+                    </div>
 
-                <div class="col-md-12">
-                    <div id="home" class="content">
-                        
-                        <div class="col-md-12">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <h2 class="navbar-heading">
+                            <strong class="abv-color">N</strong>ucleic <strong class="abv-color">A</strong>cid <strong
+                                class="abv-color">S</strong>e<strong class="abv-color">Q</strong>uence <strong
+                                class="abv-color">A</strong>nalysis <strong class="abv-color">R</strong>esource (<strong
+                                class="abv-color">NASQAR</strong>)
+                        </h2>
 
-                                <div class="col-md-4 overview-fontsize">
-                                    <h3 class="title-color"><strong>Overview</strong></h3>
-                                    <hr/>
-                                    <p>This portal hosts a number of  <strong>web-based Bioinformatics analysis and visualization</strong> apps. </p>
-                                    <p>Users can either run apps <strong>Online</strong> or <strong> download/run on a local machine</strong></p>
-                                    <hr/>
-                                    <h3 class="title-color"><strong>GitHub</strong></h3>
-                                    <p>
-                                        <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2">https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2</a>
-                                    </p>
-                                        
+                        <h4 class="navbar-subheading">
+                            A web-based platform for High-throughput sequencing data analysis and visualization
+                        </h4>
+                    </div>
 
-                                </div>
 
-                                <div class="col-md-8 overview-fontsize">
-                                    <h3 class="title-color"><strong>Abstract</strong></h3>
-                                    <hr/>
-                                    <div class="well">
-                                        <p>
-                                            As high-throughput sequencing applications continue to evolve, the rapid growth in quantity and variety of sequence-based data calls for the development of new software libraries and tools for data analysis and visualization. Often, effective use of these tools requires computational skills beyond those of the average researcher. 
-                                        </p>
-                                        <p>
-                                            To lower this computational barrier, we have created a dynamic web-based platform, <strong>NASQAR</strong>. 
-                                            It provides an intuitive interface that allows users to easily and efficiently explore their data in an interactive way using popular tools for a variety of applications, including <strong>Transcriptome Data Preprocessing, RNAseq Analysis (including Single-cell RNAseq), Metagenomics, and Gene Enrichment</strong>
-                                        </p>
+                </div>
+            </nav>
 
-                                        
-                
-                                        
-                                    </div>
-                                </div>
+            <div class="col-md-12">
+                <div id="home" class="content">
 
-                                <div class="col-md-12" id="dataprivacy">
-                                    <h3 class="title-color"><strong>Data Privacy</strong></h3>
-                                    <hr/>
-                                    <p>
-                                        Although data uploaded for analysis on the online instance of NASQAR (at <a href="http://nasqar.abudhabi.nyu.edu/" target="_blank">http://nasqar.abudhabi.nyu.edu/</a>) is 
-                                        by default discarded after a users session ends, this does not guarantee total data privacy. 
-                                        In cases where data privacy is a concern (e.g. patient or pilot data), it is recommended that 
-                                        NASQAR is deployed on a local intranet for private users, or on a personal computer. 
-                                        A Docker image of NASQAR is publicly available through <a href="https://hub.docker.com/r/nyuadcorebio/nasqarall" target="_blank">DockerHub</a> and can be used to deploy 
-                                        the application seamlessly on any system with Docker installed, whether a local computer, 
-                                        a public internet  server,  or  a  private  server  (e.g.  research  institutions  intranet). 
-                                    </p>
-                            </div>
-                            <div class="col-md-12" id="installrun">
-                                <h3 class="title-color"><strong>Run NASQAR on local computer/server (Docker)</strong></h3>
-                                <hr/>
-                                <p>
-                                    <strong>Prerequisite:</strong> <a href="https://docs.docker.com/v17.09/engine/installation/" target="_blank">Docker</a> (version >= 17.03.0-ce)
-                                </p>
-                                <p>
-                                    To run NASQAR locally on port 80, use the following docker command:
-                                </p>
-                                <div class="well">
-                                    <p>docker run -p 80:80 nyuadcorebio/nasqarall:nasqar</p>
-                                </div>
-                                <p>
-                                    To run NASQAR locally on a different port (e.g. port 8083), use:
-                                </p>
-                                <div class="well">
-                                    <p>docker run -p 8083:80 nyuadcorebio/nasqarall:nasqar</p>
-                                </div>
+                    <div class="col-md-12">
 
-                                <p>
-                                    Access via web-browser on http://localhost/ or http://localhost:8083/ depending on port number used. 
-                                </p>
+                        <div class="col-md-4 overview-fontsize">
+                            <h3 class="title-color"><strong>Overview</strong></h3>
+                            <hr />
+                            <p>This portal hosts a number of <strong>web-based Bioinformatics analysis and
+                                    visualization</strong> apps. </p>
+                            <p>Users can either run apps <strong>Online</strong> or <strong> download/run on a local
+                                    machine</strong></p>
+                            <hr />
+                            <h3 class="title-color"><strong>GitHub</strong></h3>
+                            <p>
+                                <a
+                                    href="https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2">https://github.com/nyuad-corebio/Nasqar2/tree/main/Nasqar2</a>
+                            </p>
+
+
                         </div>
-                                <div class="col-md-12" id="apps">
-                                        <h3 class="title-color"><strong>Apps</strong></h3>
-                                        <hr/>
+
+                        <div class="col-md-8 overview-fontsize">
+                            <h3 class="title-color"><strong>Abstract</strong></h3>
+                            <hr />
+                            <div class="well">
+                                <p>
+                                    As high-throughput sequencing applications continue to evolve, the rapid growth in
+                                    quantity and variety of sequence-based data calls for the development of new
+                                    software libraries and tools for data analysis and visualization. Often, effective
+                                    use of these tools requires computational skills beyond those of the average
+                                    researcher.
+                                </p>
+                                <p>
+                                    To lower this computational barrier, we have created a dynamic web-based platform,
+                                    <strong>NASQAR</strong>.
+                                    It provides an intuitive interface that allows users to easily and efficiently
+                                    explore their data in an interactive way using popular tools for a variety of
+                                    applications, including <strong>Transcriptome Data Preprocessing, RNAseq Analysis
+                                        (including Single-cell RNAseq), Metagenomics, and Gene Enrichment</strong>
+                                </p>
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-12" id="nasqarupdates">
+                            <hr>
+                            <h3 class="title-color"><strong>NASQAR2 Updates:</strong></h3>
+                            <hr>
+                            <h4>R version has been updated to 4.2.3</h4>
+                            <h4>GeneCountMerger:</h4>
+                            <ul>
+                                <li>Added Wormbase ID to SYMBOL mapping.</li>
+                            </ul>
+                            <h4>deseq2shiny:</h4>
+                            <ul>
+                                <li>Volcano plot</li>
+                                <li>Venn Diagram</li>
+                                <li>Input data now takes gene.id and gene.name together with Gene count data</li>
+                            </ul>
+                            <h4>ClusterProfShinyORA:</h4>
+                            <ul>
+                                <li>Selective selection of interested pathways for plotting</li>
+                            </ul>
+
+                            <p>These updates bring exciting new features and improvements to NASAQ2, enhancing its
+                                capabilities and usability.</p>
+
+                        </div>
+
+                        <div class="col-md-12" id="dataprivacy">
+                            <h3 class="title-color"><strong>Data Privacy</strong></h3>
+                            <hr />
+                            <p>
+                                Although data uploaded for analysis on the online instance of NASQAR (at <a
+                                    href="http://nasqar.abudhabi.nyu.edu/"
+                                    target="_blank">http://nasqar.abudhabi.nyu.edu/</a>) is
+                                by default discarded after a users session ends, this does not guarantee total data
+                                privacy.
+                                In cases where data privacy is a concern (e.g. patient or pilot data), it is recommended
+                                that
+                                NASQAR is deployed on a local intranet for private users, or on a personal computer.
+                                A Docker image of NASQAR is publicly available through <a
+                                    href="https://hub.docker.com/r/nyuadcorebio/nasqarall" target="_blank">DockerHub</a>
+                                and can be used to deploy
+                                the application seamlessly on any system with Docker installed, whether a local
+                                computer,
+                                a public internet server, or a private server (e.g. research institutions intranet).
+                            </p>
+                        </div>
+                        <div class="col-md-12" id="installrun">
+                            <h3 class="title-color"><strong>Run NASQAR on local computer/server (Docker)</strong></h3>
+                            <hr />
+                            <p>
+                                <strong>Prerequisite:</strong> <a
+                                    href="https://docs.docker.com/v17.09/engine/installation/"
+                                    target="_blank">Docker</a> (version >= 17.03.0-ce)
+                            </p>
+                            <p>
+                                To run NASQAR locally on port 80, use the following docker command:
+                            </p>
+                            <div class="well">
+                                <p>docker run -p 80:80 nyuadcorebio/nasqarall:nasqar</p>
+                            </div>
+                            <p>
+                                To run NASQAR locally on a different port (e.g. port 8083), use:
+                            </p>
+                            <div class="well">
+                                <p>docker run -p 8083:80 nyuadcorebio/nasqarall:nasqar</p>
+                            </div>
+
+                            <p>
+                                Access via web-browser on http://localhost/ or http://localhost:8083/ depending on port
+                                number used.
+                            </p>
+                        </div>
+                        <div class="col-md-12" id="apps">
+                            <h3 class="title-color"><strong>Apps</strong></h3>
+                            <hr />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-4 card-padding">
+                                <div class="card-title-adjust">
+                                    <h4><strong class="prepro-color card-title">Pre-Processing</strong></h4>
                                 </div>
-                                <div class="col-md-12">
-                                        <div class="col-md-4 card-padding">
-                                                <div class="card-title-adjust"><h4><strong class="prepro-color card-title">Pre-Processing</strong></h4></div>
-            
-                                                <div class="colPad prepro-color">
-                                                    <div class="card">
-                                                        <div class="card__item">
-                                                            <figure class="imghvr-fold-up">
-                                                            <div class="card">
-                    
-                                                                <div class="card__item" style="width: 100%;">
-                                                                    <p class="card__item-title"><em>Gene Count Merger</em></p>
-                                                                    <a href="/GeneCountMerger" title="" style="position: unset;" target="_blank">
-                                                                    <div class="atvImg">
-                                                                        <img src="img/mergeScreenshot.png" class="img-responsive">
-                                                            
-                                                                        <div class="atvImg-layer" data-img="img/mergeScreenshot.png"></div>
-                                                            
-                                                                    </div>
-                                                            
-                                                                    </a>
-                                                                </div>
-                                                                
-                                                                
-                                                            
+
+                                <div class="colPad prepro-color">
+                                    <div class="card">
+                                        <div class="card__item">
+                                            <figure class="imghvr-fold-up">
+                                                <div class="card">
+
+                                                    <div class="card__item" style="width: 100%;">
+                                                        <p class="card__item-title"><em>Gene Count Merger</em></p>
+                                                        <a href="/GeneCountMerger" title="" style="position: unset;"
+                                                            target="_blank">
+                                                            <div class="atvImg">
+                                                                <img src="img/mergeScreenshot.png"
+                                                                    class="img-responsive">
+
+                                                                <div class="atvImg-layer"
+                                                                    data-img="img/mergeScreenshot.png"></div>
+
                                                             </div>
-                                                            
-                                                            
-                                                            <figcaption>
-                                                                <p><strong>Gene Count Merger</strong></p>
-                                                                
-                                                                                <p class="vertical-center container6">
-                                                                                    <a href="/GeneCountMerger" class="btn btn-info btn-lg fixbtnlink" target="_blank">Launch</a>
-                                                                                </p>
-                                                                            
-                                                                
-                                                                <ul>
-                                                                    <!-- <li><p>Merge individual raw gene counts files into one csv file</p></li>
+
+                                                        </a>
+                                                    </div>
+
+
+
+                                                </div>
+
+
+                                                <figcaption>
+                                                    <p><strong>Gene Count Merger</strong></p>
+
+                                                    <p class="vertical-center container6">
+                                                        <a href="/GeneCountMerger"
+                                                            class="btn btn-info btn-lg fixbtnlink"
+                                                            target="_blank">Launch</a>
+                                                    </p>
+
+
+                                                    <ul>
+                                                        <!-- <li><p>Merge individual raw gene counts files into one csv file</p></li>
                                                                     <li><p>Convert gene ids to gene names & Remove duplicate genes</p></li>
                                                                     <li><p>Add pseudo counts</p></li> -->
-                                                                    
-                                                                    <!-- <li><p><a href="/GeneCountMerger" style="position: unset; color:lightgreen;" target="_blank" ><strong>Launch</strong></a></p></li> -->
 
-                                                                </ul>
-                                                                
-                                                                
-                                                            </figcaption>
-                                                            </figure>
-                                                        </div>
-                                                        <hr/>
-            
-                                                        <div class="card__item">
-                                                                <figure class="imghvr-fold-up" >
-                                                                  <div class="card">
-                          
-                                                                      <div class="card__item" style="width: 100%;">
-                                                                        <p class="card__item-title"><em>Merge FPKMs</em></p>
-                                                                        <a href="/mergeFPKMs" title="" style="position: unset;" target="_blank">
-                                                                          <div class="atvImg">
-                                                                            <img src="img/mergefpkmscr1.png" class="img-responsive">
-                                                                  
-                                                                            <div class="atvImg-layer" data-img="img/mergefpkmscr1.png"></div>
-                                                                  
-                                                                          </div>
-                                                                  
-                                                                        </a>
-                                                                      </div>
-                                                                   
-                                                                  
-                                                                    </div>
-                                                                  
-                                                                  
-                                                                  <figcaption>
-                                                                    <p><strong>mergeFPKMs</strong></p>
-                                                                    <p class="vertical-center container6">
-                                                                            <a href="/mergeFPKMs" class="btn btn-info btn-lg fixbtnlink" target="_blank">Launch</a>
-                                                                        </p>
-                                                                    <ul>
-                                                                        <!-- <li><p>Merge individual FPKM files into one csv file.</p></li>
+                                                        <!-- <li><p><a href="/GeneCountMerger" style="position: unset; color:lightgreen;" target="_blank" ><strong>Launch</strong></a></p></li> -->
+
+                                                    </ul>
+
+
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                        <hr />
+
+                                        <div class="card__item">
+                                            <figure class="imghvr-fold-up">
+                                                <div class="card">
+
+                                                    <div class="card__item" style="width: 100%;">
+                                                        <p class="card__item-title"><em>Merge FPKMs</em></p>
+                                                        <a href="/mergeFPKMs" title="" style="position: unset;"
+                                                            target="_blank">
+                                                            <div class="atvImg">
+                                                                <img src="img/mergefpkmscr1.png" class="img-responsive">
+
+                                                                <div class="atvImg-layer"
+                                                                    data-img="img/mergefpkmscr1.png"></div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                                <figcaption>
+                                                    <p><strong>mergeFPKMs</strong></p>
+                                                    <p class="vertical-center container6">
+                                                        <a href="/mergeFPKMs" class="btn btn-info btn-lg fixbtnlink"
+                                                            target="_blank">Launch</a>
+                                                    </p>
+                                                    <ul>
+                                                        <!-- <li><p>Merge individual FPKM files into one csv file.</p></li>
                                                                         <li><p>Convert gene ids to gene names & Remove duplicate genes</p></li>
                                                                         <li><p>Convert FPKMs to TPMS</p></li> -->
-                                                                        <!-- <li><p><strong><a href="/mergeFPKMs" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
-                                                                    </ul>
-                                                                  </figcaption>
-                                                                </figure>
-                                                              </div>
-                                                        
-                
-                
-                                                        </div>
-            
-                                                    </div>
-                                                </div>
-                                              
-                                              <div class="col-md-4 card-padding" >
-                                                    <div class="card-title-adjust"><h4><strong class="card-title bulk-color">Bulk RNA</strong></h4></div>
-                                                    <div class="colPad bulk-color">
-                                                      <div class="card">
-                                                              <div class="card__item">
-                                                                <figure class="imghvr-fold-up" >
-                                                                  <div class="card">
-                          
-                                                                      <div class="card__item" style="width: 100%;">
-                                                                        <p class="card__item-title"><em>DESeq2 Shiny</em></p>
-                                                                        <a href="/deseq2shiny" title="" style="position: unset;">
-                                                                          <div class="atvImg">
-                                                                            <img src="img/screenshotdeseq2.png" class="img-responsive">
-                                                                  
-                                                                            <div class="atvImg-layer" data-img="img/screenshotdeseq2.png"></div>
-                                                                  
-                                                                          </div>
-                                                                  
-                                                                        </a>
-                                                                      </div>
-                                                                   
-                                                                  
-                                                                    </div>
-                                                                  
-                                                                  
-                                                                  <figcaption>
-                                                                    <p><strong>DESeq2 Shiny</strong></p>
-                                                                    <p class="vertical-center container6">
-                                                                            <a href="/deseq2shiny" class="btn btn-info btn-lg fixbtnlink" target="_blank">Launch</a>
-                                                                    </p>
-                                                                    <ul>
-                                                                        <!-- <li><p>an interactive web application for differential expression analysis based on DESeq2</p></li> -->
-                                                                        <!-- <li><p><strong><a href="/deseq2shiny" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
-                                                                    </ul>
-                                                                 </figcaption>
-                                                                  
-                                                                </figure>
-                                                              </div>
-                                                              <hr/>
-                      
-                                                              <div class="card__item">
-                                                                      <figure class="imghvr-fold-up" >
-                                                                        <div class="card">
-                                
-                                                                            <div class="card__item" style="width: 100%;">
-                                                                              <p class="card__item-title"><em>STARTApp</em></p>
-                                                                              <a href="/tsar_nasqar" title="" style="position: unset;">
-                                                                                <div class="atvImg">
-                                                                                  <img src="img/startapp.png" class="img-responsive">
-                                                                        
-                                                                                  <div class="atvImg-layer" data-img="img/startapp.png"></div>
-                                                                        
-                                                                                </div>
-                                                                        
-                                                                              </a>
-                                                                            </div>
-                                                                         
-                                                                        
-                                                                          </div>
-                                                                        
-                                                                        
-                                                                        <figcaption>
-                                                                          <p><strong>STARTapp</strong></p>
-                                                                          <p class="vertical-center container6">
-                                                                                <a href="/tsar_nasqar" class="btn btn-info btn-lg fixbtnlink" target="_blank">Launch</a>
-                                                                          </p>
-                                                                          <ul>
-                                                                              <!-- <li><p>R Shiny Transcriptome Analysis Resource Tool</p></li>
-                                                                               <li><p>a web-based RNAseq analysis and visualization resource</p></li> -->
-                                                                               <!-- <li><p><strong><a href="/tsar_nasqar" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
-                                                                          </ul>
-                                                                          
-                                                                        </figcaption>
-                                                                        
-                                                                      </figure>
-                                                                    </div>
-                      
-                                                              </div>
-              
-                                                        </div>
-                                                </div>
-                                
-                                                <!-- <div class="col-md-12">
-                                                        <hr/>
-                                                </div> -->
-                                                <div class="col-md-4 card-padding" >
-                                                    <div class="card-title-adjust"><h4><strong class="card-title single-color">Enrichment</strong></h4></div>
-                                                    <div class="colPad single-color">
-                                                        <div class="card">
-                                                            <div class="card__item">
-                                                                <figure class="imghvr-fold-up" >
-                                                                <div class="card">
-                        
-                                                                    <div class="card__item" style="width: 100%;">
-                                                                        <p class="card__item-title"><em>clusterProfiler(GSEA)</em></p>
-                                                                        <a href="/ClusterProfShinyGSEA" title="" style="position: unset;">
-                                                                        <div class="atvImg">
-                                                                            <img src="img/gseascr.png" class="img-responsive">
-                                                                
-                                                                            <div class="atvImg-layer" data-img="img/gseascr.png"></div>
-                                                                
-                                                                        </div>
-                                                                
-                                                                        </a>
-                                                                    </div>
-                                                                    </div>
-                                                                    
-                                                                    
-                                                                    <figcaption>
-                                                                        <p><strong>clusterProfiler(GSEA)</strong></p>
-                                                                        <p class="vertical-center container6">
-                                                                                <a href="/ClusterProfShinyGSEA" class="btn btn-info btn-lg fixbtnlink" target="_blank">Launch</a>
-                                                                        </p>
-                                                                        <ul>
-                                                                            <!-- <li><p>R Shiny interface for Seurat single-cell analysis library developed and maintained by NYUAD CGSB Bioinformatics Core</p</li> -->
-                                                                            <!-- <li><p><strong><a href="/SeuratWizard" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
-                                                                        </ul>
-                                                                        
-                                                                    </figcaption>
-                                                                    
-                                                                    </figure>
-                                                                </div>
-            
-                                                                <hr/>
-            
-                                                                <div class="card__item">
-                                                                    <figure class="imghvr-fold-up" >
-                                                                        <div class="card">
-                                
-                                                                            <div class="card__item" style="width: 100%;">
-                                                                            <p class="card__item-title"><em>clusterProfiler(ORA)</em></p>
-                                                                            <a href="/ClusterProfShinyORA" title="" style="position: unset;">
-                                                                                <div class="atvImg">
-                                                                                <img src="img/orascr.png" class="img-responsive">
-                                                                        
-                                                                                <div class="atvImg-layer" data-img="img/orascr.png"></div>
-                                                                        
-                                                                                </div>
-                                                                        
-                                                                            </a>
-                                                                            </div>
-                                                                        
-                                                                        
-                                                                        </div>
-                                                                        
-                                                                        
-                                                                        <figcaption>
-                                                                        <p><strong>clusterProfiler(ORA)</strong></p>
-                                                                        <p class="vertical-center container6">
-                                                                                <a href="/ClusterProfShinyORA" class="btn btn-info btn-lg fixbtnlink" target="_blank">Launch</a>
-                                                                        </p>
-                                                                        <ul>
-                                                                            <!-- <li><p><strong><a href="/SeuratV3Wizard" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
-
-                                                                        </ul>
-                                                                    </figcaption>
-                                                                        
-                                                                    </figure>
-                                                            </div>
-                                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                               
-
-                                                <div class="col-md-12">
-                                                    <div class="col-md-4 card-padding" >
-                                                                                                    <div class="card-title-adjust"><h4><strong class="card-title single-color">Single-Cell RNA</strong></h4></div>
-                                                                                                        <div class="colPad single-color">
-                                                                                                            <div class="card">
-                                                                                                                <div class="card__item">
-                                                                                                                    <figure class="imghvr-fold-up" >
-                                                                                                                    
-                                                                                                                    
-                                                                                                                            <div class="card">
-                                                                                    
-                                                                                                                                <div class="card__item" style="width: 100%;">
-                                                                                                                                <p class="card__item-title"><em>SeuratV3 Wizard</em></p>
-                                                                                                                                <a href="/SeuratV3Wizard" title="" style="position: unset;">
-                                                                                                                                    <div class="atvImg">
-                                                                                                                                    <img src="img/seurat2.png" class="img-responsive">
-                                                                                                                            
-                                                                                                                                    <div class="atvImg-layer" data-img="img/seurat1.png"></div>
-                                                                                                                            
-                                                                                                                                    </div>
-                                                                                                                            
-                                                                                                                                </a>
-                                                                                                                                </div>
-                                                                                                                            
-                                                                                                                            
-                                                                                                                            </div>
-                                                                                                                            
-                                                                                                                            
-                                                                                                                            <figcaption>
-                                                                                                                            <p><strong>SeuratV3 Wizard</strong></p>
-                                                                                                                            <p class="vertical-center container6">
-                                                                                                                                    <a href="/SeuratV3Wizard" class="btn btn-info btn-lg fixbtnlink" target="_blank">Launch</a>
-                                                                                                                            </p>
-                                                                                                                            <ul>
-                                                                                                                                <!-- <li><p><strong><a href="/SeuratV3Wizard" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
-                                                    
-                                                                                                                            </ul>
-                                                                                                                        </figcaption>
-                                                                                                                            
-                                                                                                                        </figure>
-                                                                                                                </div>
-                                                    
-                                                                                                                <hr />
-                                                    
-                                                                                                                </div>
-                                                                                                                                
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                         
-
-                                                <div class="col-md-4 card-padding" >
-                                                    <div class="card-title-adjust"><h4><strong class="card-title other-color">Other</strong></h4></div>
-                                                    <div class="colPad other-color">
-                                                        <div class="card">
-                                                            <div class="card__item">
-                                                                <figure class="imghvr-fold-up" >
-                                                                <div class="card">
-                                                                    </div>                                                                    
-                                                                    </div>
-                                                                    
-            
-                                                                <hr/>
-            
-                                                                <div class="card__item">
-                                                                    <figure class="imghvr-fold-up" >
-                                                                        <div class="card">
-                                
-                                                                            <div class="card__item" style="width: 100%;">
-                                                                            <p class="card__item-title"><em>DEApp (RNASeq)</em></p>
-                                                                            <a href="/DEApp" title="" style="position: unset;">
-                                                                                <div class="atvImg">
-                                                                                <img src="img/deappscr.png" class="img-responsive">
-                                                                        
-                                                                                <div class="atvImg-layer" data-img="img/deappscr.png"></div>
-                                                                        
-                                                                                </div>
-                                                                        
-                                                                            </a>
-                                                                            </div>
-                                                                        
-                                                                        
-                                                                        </div>
-                                                                        
-                                                                        
-                                                                        <figcaption>
-                                                                        <p><strong>DEApp</strong></p>
-                                                                        <p class="vertical-center container6">
-                                                                                <a href="/DEApp" class="btn btn-info btn-lg fixbtnlink" target="_blank">Launch</a>
-                                                                        </p>
-                                                                        <ul>
-                                                                            <!-- <li><p>R package designed to facilitate downstream analysis of RNA-seq and similar expression data with various exploratory plots and data mining tools</p></li> -->
-                                                                            <!-- <li><p><strong><a href="/shinyngs" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
-                                                                        </ul>
-                                                                        
-                                                                    </figcaption>
-                                                                        
-                                                                    </figure>
-                                                            </div>
-                                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        <!-- <li><p><strong><a href="/mergeFPKMs" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
+                                                    </ul>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
 
 
-                                            
-            
-            
-            
+
                                     </div>
 
-                                    
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 card-padding">
+                                <div class="card-title-adjust">
+                                    <h4><strong class="card-title bulk-color">Bulk RNA</strong></h4>
+                                </div>
+                                <div class="colPad bulk-color">
+                                    <div class="card">
+                                        <div class="card__item">
+                                            <figure class="imghvr-fold-up">
+                                                <div class="card">
+
+                                                    <div class="card__item" style="width: 100%;">
+                                                        <p class="card__item-title"><em>DESeq2 Shiny</em></p>
+                                                        <a href="/deseq2shiny" title="" style="position: unset;">
+                                                            <div class="atvImg">
+                                                                <img src="img/screenshotdeseq2.png"
+                                                                    class="img-responsive">
+
+                                                                <div class="atvImg-layer"
+                                                                    data-img="img/screenshotdeseq2.png"></div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
 
 
-
-
-                                    <div class="col-md-12" id="citation">
-                                            <hr>
-                                            <h3 class="title-color"><strong>Citation</strong></h3>
-                                            <p>
-                                                Lastly, if you use any of the apps on our portal as part of a publication, 
-                                                please remember to add the appropriate NASQAR citation,  as follows: 
-                                            </p>
-                                        
-                                            <div class="row">
-                                                <div class="well well-sm col-md-10 col-md-offset-1" style="background-color: white;">
-                                                    <em>
-                                                    <p>
-                                                        <strong>NASQAR: A web-based platform for High-throughput sequencing data analysis and visualization</strong>
-                                                    </p>
-                                                    <p>
-                                                        <small>
-                                                        Ayman Yousif, Nizar Drou, Jillian Rowe, Mohammed Khalfan, Kristin C. Gunsalus
-                                                        </small>
-                                                    </p>
-                                                    <p>
-                                                        <small>
-                                                        bioRxiv 709980; doi: <a href="https://doi.org/10.1101/709980" target="_blank">https://doi.org/10.1101/709980</a>
-                                                        
-                                                        </small>
-                                                    </p>
-                                                    </em>
                                                 </div>
+
+
+                                                <figcaption>
+                                                    <p><strong>DESeq2 Shiny</strong></p>
+                                                    <p class="vertical-center container6">
+                                                        <a href="/deseq2shiny" class="btn btn-info btn-lg fixbtnlink"
+                                                            target="_blank">Launch</a>
+                                                    </p>
+                                                    <ul>
+                                                        <!-- <li><p>an interactive web application for differential expression analysis based on DESeq2</p></li> -->
+                                                        <!-- <li><p><strong><a href="/deseq2shiny" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
+                                                    </ul>
+                                                </figcaption>
+
+                                            </figure>
+                                        </div>
+                                        <hr />
+
+                                        <div class="card__item">
+                                            <figure class="imghvr-fold-up">
+                                                <div class="card">
+
+                                                    <div class="card__item" style="width: 100%;">
+                                                        <p class="card__item-title"><em>STARTApp</em></p>
+                                                        <a href="/tsar_nasqar" title="" style="position: unset;">
+                                                            <div class="atvImg">
+                                                                <img src="img/startapp.png" class="img-responsive">
+
+                                                                <div class="atvImg-layer" data-img="img/startapp.png">
+                                                                </div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                                <figcaption>
+                                                    <p><strong>STARTapp</strong></p>
+                                                    <p class="vertical-center container6">
+                                                        <a href="/tsar_nasqar" class="btn btn-info btn-lg fixbtnlink"
+                                                            target="_blank">Launch</a>
+                                                    </p>
+                                                    <ul>
+                                                        <!-- <li><p>R Shiny Transcriptome Analysis Resource Tool</p></li>
+                                                                               <li><p>a web-based RNAseq analysis and visualization resource</p></li> -->
+                                                        <!-- <li><p><strong><a href="/tsar_nasqar" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
+                                                    </ul>
+
+                                                </figcaption>
+
+                                            </figure>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-md-12">
+                                                        <hr/>
+                                                </div> -->
+                            <div class="col-md-4 card-padding">
+                                <div class="card-title-adjust">
+                                    <h4><strong class="card-title single-color">Enrichment</strong></h4>
+                                </div>
+                                <div class="colPad single-color">
+                                    <div class="card">
+                                        <div class="card__item">
+                                            <figure class="imghvr-fold-up">
+                                                <div class="card">
+
+                                                    <div class="card__item" style="width: 100%;">
+                                                        <p class="card__item-title"><em>clusterProfiler(GSEA)</em></p>
+                                                        <a href="/ClusterProfShinyGSEA" title=""
+                                                            style="position: unset;">
+                                                            <div class="atvImg">
+                                                                <img src="img/gseascr.png" class="img-responsive">
+
+                                                                <div class="atvImg-layer" data-img="img/gseascr.png">
+                                                                </div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+
+                                                <figcaption>
+                                                    <p><strong>clusterProfiler(GSEA)</strong></p>
+                                                    <p class="vertical-center container6">
+                                                        <a href="/ClusterProfShinyGSEA"
+                                                            class="btn btn-info btn-lg fixbtnlink"
+                                                            target="_blank">Launch</a>
+                                                    </p>
+                                                    <ul>
+                                                        <!-- <li><p>R Shiny interface for Seurat single-cell analysis library developed and maintained by NYUAD CGSB Bioinformatics Core</p</li> -->
+                                                        <!-- <li><p><strong><a href="/SeuratWizard" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
+                                                    </ul>
+
+                                                </figcaption>
+
+                                            </figure>
+                                        </div>
+
+                                        <hr />
+
+                                        <div class="card__item">
+                                            <figure class="imghvr-fold-up">
+                                                <div class="card">
+
+                                                    <div class="card__item" style="width: 100%;">
+                                                        <p class="card__item-title"><em>clusterProfiler(ORA)</em></p>
+                                                        <a href="/ClusterProfShinyORA" title=""
+                                                            style="position: unset;">
+                                                            <div class="atvImg">
+                                                                <img src="img/orascr.png" class="img-responsive">
+
+                                                                <div class="atvImg-layer" data-img="img/orascr.png">
+                                                                </div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                                <figcaption>
+                                                    <p><strong>clusterProfiler(ORA)</strong></p>
+                                                    <p class="vertical-center container6">
+                                                        <a href="/ClusterProfShinyORA"
+                                                            class="btn btn-info btn-lg fixbtnlink"
+                                                            target="_blank">Launch</a>
+                                                    </p>
+                                                    <ul>
+                                                        <!-- <li><p><strong><a href="/SeuratV3Wizard" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
+
+                                                    </ul>
+                                                </figcaption>
+
+                                            </figure>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="col-md-4 card-padding">
+                                    <div class="card-title-adjust">
+                                        <h4><strong class="card-title single-color">Single-Cell RNA</strong></h4>
+                                    </div>
+                                    <div class="colPad single-color">
+                                        <div class="card">
+                                            <div class="card__item">
+                                                <figure class="imghvr-fold-up">
+
+
+                                                    <div class="card">
+
+                                                        <div class="card__item" style="width: 100%;">
+                                                            <p class="card__item-title"><em>SeuratV3 Wizard</em></p>
+                                                            <a href="/SeuratV3Wizard" title="" style="position: unset;">
+                                                                <div class="atvImg">
+                                                                    <img src="img/seurat2.png" class="img-responsive">
+
+                                                                    <div class="atvImg-layer"
+                                                                        data-img="img/seurat1.png"></div>
+
+                                                                </div>
+
+                                                            </a>
+                                                        </div>
+
+
+                                                    </div>
+
+
+                                                    <figcaption>
+                                                        <p><strong>SeuratV3 Wizard</strong></p>
+                                                        <p class="vertical-center container6">
+                                                            <a href="/SeuratV3Wizard"
+                                                                class="btn btn-info btn-lg fixbtnlink"
+                                                                target="_blank">Launch</a>
+                                                        </p>
+                                                        <ul>
+                                                            <!-- <li><p><strong><a href="/SeuratV3Wizard" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
+
+                                                        </ul>
+                                                    </figcaption>
+
+                                                </figure>
                                             </div>
 
-                                            <p>
-                                                Also make sure to add appropriate citation for the open source apps we are hosting
-                                                which are always clearly displayed on the individual app pages or GitHub
-                                                
-                                        
-                                            </p>
-                                    </div>    
+                                            <hr />
+
+                                        </div>
+
+                                    </div>
                                 </div>
+                            </div>
+
+
+                            <div class="col-md-4 card-padding">
+                                <div class="card-title-adjust">
+                                    <h4><strong class="card-title other-color">Other</strong></h4>
+                                </div>
+                                <div class="colPad other-color">
+                                    <div class="card">
+                                        <div class="card__item">
+                                            <figure class="imghvr-fold-up">
+                                                <div class="card">
+                                                </div>
+                                        </div>
+
+
+                                        <hr />
+
+                                        <div class="card__item">
+                                            <figure class="imghvr-fold-up">
+                                                <div class="card">
+
+                                                    <div class="card__item" style="width: 100%;">
+                                                        <p class="card__item-title"><em>DEApp (RNASeq)</em></p>
+                                                        <a href="/DEApp" title="" style="position: unset;">
+                                                            <div class="atvImg">
+                                                                <img src="img/deappscr.png" class="img-responsive">
+
+                                                                <div class="atvImg-layer" data-img="img/deappscr.png">
+                                                                </div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                                <figcaption>
+                                                    <p><strong>DEApp</strong></p>
+                                                    <p class="vertical-center container6">
+                                                        <a href="/DEApp" class="btn btn-info btn-lg fixbtnlink"
+                                                            target="_blank">Launch</a>
+                                                    </p>
+                                                    <ul>
+                                                        <!-- <li><p>R package designed to facilitate downstream analysis of RNA-seq and similar expression data with various exploratory plots and data mining tools</p></li> -->
+                                                        <!-- <li><p><strong><a href="/shinyngs" style="position: unset; color:lightgreen;" target="_blank">Launch</a></strong> </p></li> -->
+                                                    </ul>
+
+                                                </figcaption>
+
+                                            </figure>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 
 
 
-                                
-                                
+
+
 
                         </div>
 
-                        
-                        
-                        
-                        <div class="col-md-12">
-                            <div class="line"></div>
+
+
+
+
+                        <div class="col-md-12" id="citation">
+                            <hr>
+                            <h3 class="title-color"><strong>Citation</strong></h3>
+                            <p>
+                                Lastly, if you use any of the apps on our portal as part of a publication,
+                                please remember to add the appropriate NASQAR citation, as follows:
+                            </p>
+
+                            <div class="row">
+                                <div class="well well-sm col-md-10 col-md-offset-1" style="background-color: white;">
+                                    <em>
+                                        <p>
+                                            <strong>NASQAR: A web-based platform for High-throughput sequencing data
+                                                analysis and visualization</strong>
+                                        </p>
+                                        <p>
+                                            <small>
+                                                Ayman Yousif, Nizar Drou, Jillian Rowe, Mohammed Khalfan, Kristin C.
+                                                Gunsalus
+                                            </small>
+                                        </p>
+                                        <p>
+                                            <small>
+                                                bioRxiv 709980; doi: <a href="https://doi.org/10.1101/709980"
+                                                    target="_blank">https://doi.org/10.1101/709980</a>
+
+                                            </small>
+                                        </p>
+                                    </em>
+                                </div>
+                            </div>
+
+                            <p>
+                                Also make sure to add appropriate citation for the open source apps we are hosting
+                                which are always clearly displayed on the individual app pages or GitHub
+
+
+                            </p>
                         </div>
-                        
+                    </div>
+
+
+
+
+
 
                 </div>
 
-                <!-- <div id="" class="col-md-12 content">
+
+
+
+                <div class="col-md-12">
+                    <div class="line"></div>
+                </div>
+
+
+            </div>
+
+            <!-- <div id="" class="col-md-12 content">
                         
     
                         <h2 > <strong>Details</strong> </h2>
@@ -681,180 +777,251 @@
 
                         <div class="line"></div>
                 </div> -->
-                <div id="preproc" class="col-md-12 content">
+            <div id="preproc" class="col-md-12 content">
 
-                    <h2> <strong>Data Pre-processing Tools</strong> </h2>
-                    <hr>
-                    <h4>
-                        Gene Count Merger
-                    </h4>
-                    <div class="well">
+                <h2> <strong>Data Pre-processing Tools</strong> </h2>
+                <hr>
+                <h4>
+                    Gene Count Merger
+                </h4>
+                <div class="well">
 
-                        <ul>
-                            <li><p>Merge individual raw gene counts files into one csv file</p></li>
-                            <li><p>Convert gene ids to gene names & Remove duplicate genes</p></li>
-                            <li><p>Add pseudo counts</p></li>
-			    <li><p><strong>URLs:</strong> <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/GeneCountMerger" class="link2" target="_blank"> Github Page</a></p></li>
-                        </ul>
-                        
+                    <ul>
+                        <li>
+                            <p>Merge individual raw gene counts files into one csv file</p>
+                        </li>
+                        <li>
+                            <p>Convert gene ids to gene names & Remove duplicate genes</p>
+                        </li>
+                        <li>
+                            <p>Add pseudo counts</p>
+                        </li>
+                        <li>
+                            <p><strong>URLs:</strong> <a
+                                    href="https://github.com/nyuad-corebio/Nasqar2/tree/main/GeneCountMerger"
+                                    class="link2" target="_blank"> Github Page</a></p>
+                        </li>
+                    </ul>
 
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-                                <a href="/GeneCountMerger" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color">Gene Count Merger</a>
-                            </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <a href="/GeneCountMerger" target="_blank"
+                                class="button button-pill button-3d button-default button-block button-rounded button-large button-color">Gene
+                                Count Merger</a>
                         </div>
-                        <div class="clearBoth"></div>
-
                     </div>
+                    <div class="clearBoth"></div>
+
+                </div>
 
 
-                    <h4>
-                        Merge FPKMs
-                    </h4>
-                    <div class="well">
+                <h4>
+                    Merge FPKMs
+                </h4>
+                <div class="well">
 
-                        <ul>
-                            <li><p>Merge individual FPKM files into one csv file.</p></li>
-                            <li><p>Convert gene ids to gene names & Remove duplicate genes</p></li>
-                            <li><p>Convert FPKMs to TPMS</p></li>
-                            <li><p>Add pseudo counts</p></li>
-                        </ul>
-                        
+                    <ul>
+                        <li>
+                            <p>Merge individual FPKM files into one csv file.</p>
+                        </li>
+                        <li>
+                            <p>Convert gene ids to gene names & Remove duplicate genes</p>
+                        </li>
+                        <li>
+                            <p>Convert FPKMs to TPMS</p>
+                        </li>
+                        <li>
+                            <p>Add pseudo counts</p>
+                        </li>
+                    </ul>
 
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-                                <a href="/mergeFPKMs" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color">Merge FPKMs</a>
-                            </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <a href="/mergeFPKMs" target="_blank"
+                                class="button button-pill button-3d button-default button-block button-rounded button-large button-color">Merge
+                                FPKMs</a>
                         </div>
-                        <div class="clearBoth"></div>
-
                     </div>
-                    
-                    <h4>
-                        Create Samples MetaTable
-                    </h4>
-                    <div class="well">
+                    <div class="clearBoth"></div>
 
-                        <ul>
-                            <li><p>Create meta table for samples/factors/conditions</p></li>
-                            <li><p>Convenient to use with RNAseq/DEApp (below)</p></li>
-                        </ul>
-                        
+                </div>
 
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-                                <a href="/createSampleMeta" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color">Create MetaTable</a>
-                            </div>
+                <h4>
+                    Create Samples MetaTable
+                </h4>
+                <div class="well">
+
+                    <ul>
+                        <li>
+                            <p>Create meta table for samples/factors/conditions</p>
+                        </li>
+                        <li>
+                            <p>Convenient to use with RNAseq/DEApp (below)</p>
+                        </li>
+                    </ul>
+
+
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <a href="/createSampleMeta" target="_blank"
+                                class="button button-pill button-3d button-default button-block button-rounded button-large button-color">Create
+                                MetaTable</a>
                         </div>
-                        <div class="clearBoth"></div>
-
                     </div>
-                    
+                    <div class="clearBoth"></div>
+
+                </div>
+
             </div>
 
-            
-
-                <div id="rnaseq" class="col-md-12 content">
-                    <div class="line"></div>
-
-                    <h2> <strong>RNAseq Tools</strong> </h2>
-                    <hr>
-                    <h3> <strong><em>Single Cell</em></strong> </h3>
-                    <br>
-
-                    <h4>
-                            SeuratV3 Wizard
-                        </h4>
-                        <div class="well">
-    
-                            <ul>
-                                <li><p>R Shiny interface for Seurat (version 3.0-alpha) single-cell analysis library developed and maintained by NYUAD CGSB Bioinformatics Core</p></li>
-                                <li><p><a href="http://satijalab.org/seurat/" target="_blank" class="link2">Seurat</a> is an R toolkit for single cell genomics, developed and maintained by the Satija Lab at NYGC.</p></li>
-                                <li><p><strong>URLs:</strong> <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/SeuratV3Wizard" class="link2" target="_blank"> Github Page</a></p></li>
-                            </ul>
-                            
-    
-                            <div class="col-md-6">
-    
-                                <a href="/SeuratV3Wizard" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color">SeuratV3 Wizard </a>
-                            </div>
-                            <div class="clearBoth"></div>
-    
-                        </div>
 
 
-                    <br>
-                    <h3> <strong><em>Bulk RNA</em></strong> </h3>
-                    <br>
+            <div id="rnaseq" class="col-md-12 content">
+                <div class="line"></div>
 
-                    <h4>
-                        DESeq2 Shiny
-                    </h4>
+                <h2> <strong>RNAseq Tools</strong> </h2>
+                <hr>
+                <h3> <strong><em>Single Cell</em></strong> </h3>
+                <br>
+
+                <h4>
+                    SeuratV3 Wizard
+                </h4>
+                <div class="well">
+
+                    <ul>
+                        <li>
+                            <p>R Shiny interface for Seurat (version 3.0-alpha) single-cell analysis library developed
+                                and maintained by NYUAD CGSB Bioinformatics Core</p>
+                        </li>
+                        <li>
+                            <p><a href="http://satijalab.org/seurat/" target="_blank" class="link2">Seurat</a> is an R
+                                toolkit for single cell genomics, developed and maintained by the Satija Lab at NYGC.
+                            </p>
+                        </li>
+                        <li>
+                            <p><strong>URLs:</strong> <a
+                                    href="https://github.com/nyuad-corebio/Nasqar2/tree/main/SeuratV3Wizard"
+                                    class="link2" target="_blank"> Github Page</a></p>
+                        </li>
+                    </ul>
+
+
+                    <div class="col-md-6">
+
+                        <a href="/SeuratV3Wizard" target="_blank"
+                            class="button button-pill button-3d button-default button-block button-rounded button-large button-color">SeuratV3
+                            Wizard </a>
+                    </div>
+                    <div class="clearBoth"></div>
+
+                </div>
+
+
+                <br>
+                <h3> <strong><em>Bulk RNA</em></strong> </h3>
+                <br>
+
+                <h4>
+                    DESeq2 Shiny
+                </h4>
 
 
 
 
-                    <div class="well">
+                <div class="well">
 
-                        <ul>
-                            <li><p>An interactive web application for differential expression analysis based on DESeq2</p></li>
-                            <li><p> <a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">DESeq2:</a> an R package for Differential gene expression analysis based on the negative binomial distribution.</p></li>
-                            <li><p><strong>URLs:</strong> <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/deseq2shiny" class="link2" target="_blank"> Github Page</a></p></li>
-                        </ul>
-                        
+                    <ul>
+                        <li>
+                            <p>An interactive web application for differential expression analysis based on DESeq2</p>
+                        </li>
+                        <li>
+                            <p> <a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">DESeq2:</a> an
+                                R package for Differential gene expression analysis based on the negative binomial
+                                distribution.</p>
+                        </li>
+                        <li>
+                            <p><strong>URLs:</strong> <a
+                                    href="https://github.com/nyuad-corebio/Nasqar2/tree/main/deseq2shiny" class="link2"
+                                    target="_blank"> Github Page</a></p>
+                        </li>
+                    </ul>
 
-                        <div class="col-md-6">
-                            <a href="/deseq2shiny" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color">DESeq2 Shiny</a>
-                        </div>
+
+                    <div class="col-md-6">
+                        <a href="/deseq2shiny" target="_blank"
+                            class="button button-pill button-3d button-default button-block button-rounded button-large button-color">DESeq2
+                            Shiny</a>
+                    </div>
+                    <div class="clearBoth"></div>
+
+                </div>
+
+
+                <h4>
+                    DEApp
+                </h4>
+
+                <br>
+
+                <div class="well">
+
+                    <ul>
+                        <li>
+                            <p>DEApp: an interactive web application of differential expression analysis</p>
+                        </li>
+                        <li>
+                            <p>This app uses edgeR, limma-voom, and DESeq2</p>
+                        </li>
+                        <li>
+                            <p><strong>URLs:</strong> <a href="https://github.com/yan-cri/DEApp" class="link2"
+                                    target="_blank"> Github Page</a></p>
+                        </li>
+                    </ul>
+
+
+                    <div class="col-md-6">
+                        <a href="/DEApp" target="_blank"
+                            class="button button-pill button-3d button-default button-block button-rounded button-large button-color">DEApp</a>
+                    </div>
+                    <div class="clearBoth"></div>
+
+                </div>
+
+
+                <h4>
+                    START App: RNAseq
+                </h4>
+                <div class="well">
+
+                    <ul>
+                        <li>
+                            <p><a href="http://satijalab.org/seurat/" target="_blank" class="link2">The START App</a>: R
+                                Shiny Transcriptome Analysis Resource Tool</p>
+                        </li>
+                        <li>
+                            <p>A web-based RNAseq analysis and visualization resource using edgeR and limma-voom</p>
+                        </li>
+                        <li>
+                            <p><strong>URLs:</strong> <a href="https://github.com/jminnier/STARTapp" class="link2"
+                                    target="_blank"> Github Page</a></p>
+                        </li>
+                    </ul>
+
+
+                    <div class="col-md-5">
+
+                        <a href="/tsar_nasqar" target="_blank"
+                            class="button button-pill button-3d button-default button-block button-rounded button-large button-color"
+                            style="padding: unset;white-space: nowrap;">STARTapp: RNA Seq</a>
+                    </div>
+                    <div class="col-md-7">
+
                         <div class="clearBoth"></div>
 
                     </div>
-                    
-
-                    <h4>
-                        DEApp
-                    </h4>
-
-                    <br>
-                    
-                    <div class="well">
-
-                        <ul>
-                            <li><p>DEApp: an interactive web application of differential expression analysis</p></li>
-                            <li><p>This app uses edgeR, limma-voom, and DESeq2</p></li>
-                            <li><p><strong>URLs:</strong> <a href="https://github.com/yan-cri/DEApp" class="link2" target="_blank"> Github Page</a></p></li>
-                        </ul>
-                        
-
-                        <div class="col-md-6">
-                            <a href="/DEApp" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color">DEApp</a>
-                        </div>
-                        <div class="clearBoth"></div>
-
-                    </div>
-
-
-                    <h4>
-                        START App: RNAseq
-                    </h4>
-                    <div class="well">
-
-                        <ul>
-                            <li><p><a href="http://satijalab.org/seurat/" target="_blank" class="link2">The START App</a>: R Shiny Transcriptome Analysis Resource Tool</p></li>
-                            <li><p>A web-based RNAseq analysis and visualization resource using edgeR and limma-voom</p></li>
-                            <li><p><strong>URLs:</strong> <a href="https://github.com/jminnier/STARTapp" class="link2" target="_blank"> Github Page</a></p></li>
-                        </ul>
-                        
-
-                        <div class="col-md-5">
-                        
-                            <a href="/tsar_nasqar" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color" style="padding: unset;white-space: nowrap;">STARTapp: RNA Seq</a>
-                        </div>
-                        <div class="col-md-7">
-                        
-                        <div class="clearBoth"></div>
-
-                    </div>
 
 
 
@@ -862,10 +1029,10 @@
 
 
 
-                    
-            </div>
 
-            <div id="enrichment" class="col-md-12 content">
+                </div>
+
+                <div id="enrichment" class="col-md-12 content">
                     <div class="line"></div>
 
                     <h2> <strong>Gene Enrichment Tools</strong> </h2>
@@ -876,14 +1043,26 @@
                     <div class="well">
 
                         <ul>
-                            <li><p>A web-based application to perform Gene Set Enrichment Analysis (GSEA) using clusterProfiler and shiny R libraries</p></li>
-                            <li><p>This is based on <a href="https://guangchuangyu.github.io/software/clusterProfiler/">clusterProfiler</a> R package</p></li>
-                            <li><p><strong>URLs:</strong> <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/ClusterProfShinyGSEA" class="link2" target="_blank"> Github Page</a></p></li>
+                            <li>
+                                <p>A web-based application to perform Gene Set Enrichment Analysis (GSEA) using
+                                    clusterProfiler and shiny R libraries</p>
+                            </li>
+                            <li>
+                                <p>This is based on <a
+                                        href="https://guangchuangyu.github.io/software/clusterProfiler/">clusterProfiler</a>
+                                    R package</p>
+                            </li>
+                            <li>
+                                <p><strong>URLs:</strong> <a
+                                        href="https://github.com/nyuad-corebio/Nasqar2/tree/main/ClusterProfShinyGSEA"
+                                        class="link2" target="_blank"> Github Page</a></p>
+                            </li>
                         </ul>
-                        
+
 
                         <div class="col-md-6">
-                            <a href="/ClusterProfShinyGSEA" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color">ClusterProfShinyGSEA</a>
+                            <a href="/ClusterProfShinyGSEA" target="_blank"
+                                class="button button-pill button-3d button-default button-block button-rounded button-large button-color">ClusterProfShinyGSEA</a>
                         </div>
                         <div class="clearBoth"></div>
 
@@ -895,25 +1074,39 @@
                     <div class="well">
 
                         <ul>
-                            <li><p>A web-based application to perform Over-Representation Analysis (ORA) using clusterProfiler and shiny R libraries</p></li>
-                            <li><p>This is based on <a href="https://guangchuangyu.github.io/software/clusterProfiler/">clusterProfiler</a> R package</p></li>
-                            <li><p><strong>URLs:</strong> <a href="https://github.com/nyuad-corebio/Nasqar2/tree/main/ClusterProfShinyORA" class="link2" target="_blank"> Github Page</a></p></li>
+                            <li>
+                                <p>A web-based application to perform Over-Representation Analysis (ORA) using
+                                    clusterProfiler and shiny R libraries</p>
+                            </li>
+                            <li>
+                                <p>This is based on <a
+                                        href="https://guangchuangyu.github.io/software/clusterProfiler/">clusterProfiler</a>
+                                    R package</p>
+                            </li>
+                            <li>
+                                <p><strong>URLs:</strong> <a
+                                        href="https://github.com/nyuad-corebio/Nasqar2/tree/main/ClusterProfShinyORA"
+                                        class="link2" target="_blank"> Github Page</a></p>
+                            </li>
                         </ul>
-                        
+
 
                         <div class="col-md-6">
-                            <a href="/ClusterProfShinyORA" target="_blank" class="button button-pill button-3d button-default button-block button-rounded button-large button-color">ClusterProfShinyORA</a>
+                            <a href="/ClusterProfShinyORA" target="_blank"
+                                class="button button-pill button-3d button-default button-block button-rounded button-large button-color">ClusterProfShinyORA</a>
                         </div>
                         <div class="clearBoth"></div>
 
                     </div>
+                </div>
+
+
+
+
+
             </div>
 
 
-
-
-            
-        </div>
 
             <!-- <div id="variant" class="col-md-12 content">
                     <div class="line"></div>
@@ -932,30 +1125,30 @@
 
 
             <div class="clearBoth"></div>
-                </div>
-            </div>
         </div>
+    </div>
+    </div>
 
 
 
 
 
-        <!-- jQuery CDN -->
-         <script src="js/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="js/bootstrap.min.js"></script>
-         <!-- <script src="custom1.js"></script> -->
+    <!-- jQuery CDN -->
+    <script src="js/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="custom1.js"></script> -->
 
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebar').toggleClass('#appSubmenu');
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebar').toggleClass('#appSubmenu');
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 
-	<!-- Global site tag (gtag.js) - Google Analytics
+    <!-- Global site tag (gtag.js) - Google Analytics
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126575163-1"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -965,5 +1158,6 @@
 	  gtag('config', 'UA-126575163-1');
 	</script> -->
 
-    </body>
+</body>
+
 </html>
