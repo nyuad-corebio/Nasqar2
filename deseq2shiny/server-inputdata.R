@@ -160,7 +160,10 @@ inputFileReactive <- reactive({
     myValues$fileContent <- fileContent
     myValues$dataCounts <- as.matrix(dataCounts)
 
-    js$collapse("uploadbox")
+    if (is.null(query[["countsdata"]])) {
+        js$collapse("uploadbox")
+    }
+ 
     # print('dataCounts.....')
     # print(dataCounts)
 
