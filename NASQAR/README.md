@@ -24,7 +24,7 @@ This will run on port 8083
 ---
 ### Apps included in NASQAR
 NASQAR Custom apps:
-- [SeuratV3Wizard (scRNA)](https://github.com/nyuad-corebio/Nasqar2/tree/main//seuratv3wizard)
+- [SeuratV3Wizard (scRNA)](https://github.com/nyuad-corebio/Seuratv3wizard)
 - [SeuratWizard (scRNA)](https://github.com/nyuad-corebio/Nasqar2/tree/main//SeuratWizard)
 - [deseq2shiny (Bulk RNA)](https://github.com/nyuad-corebio/Nasqar2/tree/main//deseq2shiny)
 - [GeneCountMerger (Pre-processing)](https://github.com/nyuad-corebio/Nasqar2/tree/main//GeneCountMerger)
