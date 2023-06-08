@@ -17,10 +17,10 @@ tabItem(
                 ),
 
                 conditionalPanel(condition = "input.data_file_type=='countsFile'",
-                    radioButtons("gene_alias", "Mention if your file contains gene.id and gene.name together",
+                    radioButtons("gene_alias", "Raw counts matrix format",
                         c(
-                            "Both gene.id and gene.name" = "included",
-                            "Any of gene.id or gene.name" = "notincluded"
+                            "My matrix contains GeneIDs and GeneSymbols" = "included",
+                            "My matrix contains only GeneIds OR GeneSymbols" = "notincluded"
                 
                         ),
                         selected = "notincluded"
