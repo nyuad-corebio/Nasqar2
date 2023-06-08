@@ -4,6 +4,7 @@ channels:
   - bioconda
   - defaults
 dependencies:
+  - r-base==4.2.3 
   - r-shiny
   - bioconductor-clusterprofiler
   - r-dt
