@@ -2,3 +2,12 @@
 .Rhistory
 .RData
 .Ruserdata
+
+
+exampleData
+gene_names
+
+Rplot*.jpeg
+
+deseq2shiny/VennDiagram.*
+
