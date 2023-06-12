@@ -136,7 +136,7 @@ brush_action <- function(df, output) {
 
     m <- matrix[row_index, column_index, drop = FALSE]
     selected_matrix$matrix <- m
-    output[["heatmap_matrix_table"]] <- DT::renderDataTable(
+    output[["venn_diagram_heatmap_matrix_table"]] <- DT::renderDataTable(
         {
             gene.id <- rownames(m)
             genes <- gene.id

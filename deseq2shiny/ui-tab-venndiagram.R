@@ -123,7 +123,7 @@ tabItem(
                 hr(),
                 column(
                     12,
-                    DTOutput("heatmap_matrix_table")
+                    DTOutput("venn_diagram_heatmap_matrix_table")
                     # plotOutput("heatMap1")htmlOutput("info1"),
                 ),
                 hr(),

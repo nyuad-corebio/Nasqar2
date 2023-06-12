@@ -47,16 +47,16 @@ tabItem(
                         2,
                         actionButton("genHeatmap", "Generate Plot", class = "btn btn-primary", style = "width:100%;")
                     ),
-                    column(2,
-                        offset = 10,
-                        conditionalPanel(
-                            "output.heatmapComputed",
-                            downloadButton("downloadHighResHeatmap",
-                                "Download Heatmap",
-                                class = "btn btn-warning"
-                            )
-                        )
-                    ),
+                    # column(2,
+                    #     offset = 10,
+                    #     conditionalPanel(
+                    #         "output.heatmapComputed",
+                    #         downloadButton("downloadHighResHeatmap",
+                    #             "Download Heatmap",
+                    #             class = "btn btn-warning"
+                    #         )
+                    #     )
+                    # ),
                     column(
                         12,
                         p("* This heatmap uses normalized counts which can be viewed/downloaded below the figure")
@@ -73,11 +73,14 @@ tabItem(
                         12,
                         box(
                             title = "Heatmap", solidHeader = T, status = "primary", width = 12,
-                            withSpinner(plotOutput(outputId = "heatmapPlot", height = "1200px"))
+                            # withSpinner(plotOutput(outputId = "heatmapPlot", height = "1200px"),
+                            # ),
+                            InteractiveComplexHeatmapOutput(output_ui = withSpinner(htmlOutput("heatmap_click")))
+                            
                         )
                     ),
-                    h4(p(class = "text-right", downloadButton("downloadHeatmapCsv", "Download Normalized Counts .csv", class = "btn btn-primary btn-sm"))),
-                    withSpinner(dataTableOutput("heatmapData")),
+                    # h4(p(class = "text-right", downloadButton("downloadHeatmapCsv", "Download Normalized Counts .csv", class = "btn btn-primary btn-sm"))),
+                    # withSpinner(dataTableOutput("heatmapData")),
                     div(style = "clear:both;")
                 )
             )
