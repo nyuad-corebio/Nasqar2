@@ -27,9 +27,9 @@ RUN echo "conda activate nasqar_env" >> ~shiny/.bashrc
 RUN conda clean --all -y
 
 
-RUN conda run -n nasqar_env R -e "install.packages(c('stringi', 'GOplot', 'wordcloud2'), repos='http://cran.rstudio.com/')"
+RUN conda run -n nasqar_env R -e "install.packages(c('BiocManager','stringi', 'GOplot', 'wordcloud2'), repos='http://cran.rstudio.com/')"
 RUN conda run -n nasqar_env R -e "devtools::install_github('YuLab-SMU/clusterProfiler')"
-RUN conda run -n nasqar_env R -e "BiocManager::install(c('org.Hs.eg.db','org.Mm.eg.db','org.Rn.eg.db','org.Sc.sgd.db','org.Dm.eg.db','org.At.tair.db','org.Dr.eg.db','org.Bt.eg.db','org.Ce.eg.db','org.Gg.eg.db','org.Cf.eg.db','org.Ss.eg.db','org.Mmu.eg.db','org.EcK12.eg.db','org.Xl.eg.db','org.Pt.eg.db','org.Ag.eg.db','org.Pf.plasmo.db','org.EcSakai.eg.db'))"
+RUN conda run -n nasqar_env R -e "BiocManager::install(c('DESeq2','clusterProfiler','sva','pathview','ComplexHeatmap','EnhancedVolcano','InteractiveComplexHeatmap','org.Hs.eg.db','org.Mm.eg.db','org.Rn.eg.db','org.Sc.sgd.db','org.Dm.eg.db','org.At.tair.db','org.Dr.eg.db','org.Bt.eg.db','org.Ce.eg.db','org.Gg.eg.db','org.Cf.eg.db','org.Ss.eg.db','org.Mmu.eg.db','org.EcK12.eg.db','org.Xl.eg.db','org.Pt.eg.db','org.Ag.eg.db','org.Pf.plasmo.db','org.EcSakai.eg.db'))"
 RUN conda run -n nasqar_env R -e "devtools::install_github('smin95/smplot2')"
 ##Seurat wizard
 RUN conda run -n nasqar_env R -e "devtools::install_github('nyuad-corebio/seuratv3wizard')"

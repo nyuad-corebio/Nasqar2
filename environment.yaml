@@ -6,20 +6,17 @@ channels:
 dependencies:
   - r-base==4.2.3 
   - r-shiny
-  - bioconductor-clusterprofiler
   - r-dt
   - r-shinydashboard
   - r-shinyjs
   - r-shinyBS
   - r-shinycssloaders
   - r-uuid
-  - bioconductor-pathview
   - r-plotly
   - r-markdown 
   - r-devtools  
   - r-shinycssloaders
   - r-devtools
-  - r-biocmanager
   - r-ggupset
   - r-ggridges
   - r-europepmc
@@ -33,16 +30,10 @@ dependencies:
   - r-nmf
   - r-rclipboard
   - r-vennDiagram
-  - bioconductor-enhancedvolcano
-  - bioconductor-sva
-  - bioconductor-deseq2
   - r-pheatmap
   - r-gplots
   - r-ggvis
   - umap-learn  
   - ucsc-cell-browser
-  - bioconductor-multtest
   - libsodium
-  - bioconductor-complexheatmap
-  - bioconductor-interactivecomplexheatmap
 
