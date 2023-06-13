@@ -24,7 +24,7 @@ tabItem(
             ),
             tags$div(class = "clearBoth"),
             conditionalPanel(
-                "input.enrichKEGGTable_rows_selected.length > 0",
+                "input.enrichKEGGTable_rows_selected && input.enrichKEGGTable_rows_selected.length > 0",
                 h3(strong("Selected entries")),
                 tags$div(
                     class = "BoxArea2",
