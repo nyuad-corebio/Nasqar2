@@ -394,8 +394,8 @@ observeEvent(input$evaluateExpression, {
             genes <- expression_set_data()
             req(length(genes[1]) > 0)
             print("makeInteractiveComplexHeatmap start")
-            makeInteractiveComplexHeatmap(input, output, session, ht,
-                click_action = click_action, brush_action = brush_action
+            makeInteractiveComplexHeatmap(input, output, session, ht, 
+                click_action = click_action, brush_action = brush_action,"ht1"
             )
             print("makeInteractiveComplexHeatmap stop")
 

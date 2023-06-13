@@ -107,7 +107,7 @@ tabItem(
                     12,
                     conditionalPanel(
                         condition = "output.venn_expression_result",
-                        InteractiveComplexHeatmapOutput(output_ui = htmlOutput("info"))
+                        InteractiveComplexHeatmapOutput("ht1",output_ui = htmlOutput("info"))
                     )
                     # plotOutput("heatMap1")htmlOutput("info1"),
                 ),

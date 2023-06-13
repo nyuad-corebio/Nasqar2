@@ -75,7 +75,7 @@ tabItem(
                             title = "Heatmap", solidHeader = T, status = "primary", width = 12,
                             # withSpinner(plotOutput(outputId = "heatmapPlot", height = "1200px"),
                             # ),
-                            InteractiveComplexHeatmapOutput(output_ui = withSpinner(htmlOutput("heatmap_click")))
+                            InteractiveComplexHeatmapOutput("ht2", output_ui = withSpinner(htmlOutput("heatmap_click")))
                             
                         )
                     ),

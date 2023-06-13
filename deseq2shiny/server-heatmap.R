@@ -17,11 +17,6 @@ observe({
     req(input$genHeatmap > 0)
     logNormCounts <- heatmapReactive()$logNormCounts
      ht <- Heatmap(logNormCounts)
-
-            ht <- draw(ht)
-            makeInteractiveComplexHeatmap(input, output, session, ht,
-                click_action = heat_map_click_action, brush_action = heat_map_brush_action
-            )
 })
 
 heatmapReactive <- reactive({
@@ -91,8 +86,8 @@ heatmapReactive <- reactive({
 
             ht <- Heatmap(logNormCounts)
             ht <- draw(ht)
-            makeInteractiveComplexHeatmap(input, output, session, ht,
-                click_action = heat_map_click_action, brush_action = heat_map_brush_action
+            makeInteractiveComplexHeatmap(input, output, session, ht, 
+                click_action = heat_map_click_action, brush_action = heat_map_brush_action,"ht2"
             )
            
 
