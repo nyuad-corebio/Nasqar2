@@ -48,6 +48,9 @@ COPY NASQAR /opt/nasqar_build/NASQAR
 
 
 WORKDIR /opt/nasqar_build
+RUN wget https://github.com/UMMS-Biocore/debrowser/archive/refs/heads/master.zip
+RUN unzip master.zip
+
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 COPY shiny-server.sh /opt/nasqar_build/shiny-server.sh
 RUN mkdir /opt/nasqar_build/logs
