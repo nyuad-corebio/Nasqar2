@@ -2,11 +2,11 @@ tabItem(
     tabName = "input_tab",
     fluidRow(
         column(
-            7,
+            6,
             box(
                 title = "Upload bam file", solidHeader = T, status = "primary", width = 12, collapsible = T, id = "uploadbox",
                 # h4("Upload Gene Counts"),
-                h4("(select .CSV)"),
+                h4("(select .bam/.bai)"),
                 radioButtons("data_file_type", "Use example file or upload your own data",
                     c(
                         "Upload bam File" = "upload_bam_file",
@@ -17,12 +17,11 @@ tabItem(
                 conditionalPanel(
                     condition = "input.data_file_type=='upload_bam_file'",
                     p(".csv/.txt counts file (tab or comma delimited)"),
-                    fileInput("bam_file_path", "",
+                    fileInput("bam_files", "",
                         accept = c(
-                            "text/csv",
-                            "text/comma-separated-values,text/plain",
-                            ".csv"
-                        ), multiple = FALSE
+                            ".bai",
+                            ".bam"
+                        ), multiple = TRUE
                     )
                 ),
                 conditionalPanel(
@@ -41,7 +40,7 @@ tabItem(
                     wellPanel(
                         column(
                             12,
-                            selectInput("bs_genome_input", "BSgenome:", choices = NULL, selected = NULL)
+                            selectInput("bs_genome_input", "Reference genome:", choices = NULL, selected = NULL)
                         ),
                         column(
                             12,
@@ -53,7 +52,7 @@ tabItem(
                         ),
                         # tags$div(class = "clearBoth")
                     ),
-                    actionButton("initGo", "Create EnrichGO Object", class = "btn-info", style = "width: 100%")
+                    actionButton("initGo", "RUN QC2", class = "btn-info", style = "width: 100%")
                 )
             )
             # actionButton("run_deseq2", "Run DESeq2",
@@ -61,6 +60,14 @@ tabItem(
             #              style = "width:100%;height:60px;"
             # ),
             # plotOutput("plot")
+        ),
+        column(
+            6, 
+                tags$div(
+                    class = "BoxArea2",
+                    withSpinner(tableOutput('bam_samples_table'))
+                )
+                
         )
     )
 )

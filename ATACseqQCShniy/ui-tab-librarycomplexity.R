@@ -4,6 +4,11 @@ tabItem(
     tabName = "librarycomplexity_tab",
     fluidRow(
         column(
+            4,wellPanel(
+                  actionButton("submit", label = "Submit"),
+            selectInput("sample_librarycomplexity", "Salect Sample File", choices = NULL, selected = NULL))
+        ),
+        column(
             7,
             plotOutput("plot_libcomplexity")
       

@@ -4,6 +4,10 @@ tabItem(
     tabName = "fragmentsize_tab",
     fluidRow(
         column(
+            4,wellPanel(
+            selectInput("sample_fragmentsize", "Select Sample File", choices = NULL, selected = NULL))
+        ),
+        column(
             7,
             plotOutput("plot_fragmentsize")
       

@@ -1,5 +1,7 @@
 library(shinydashboard)
 library(shinyjs)
+library(shinycssloaders)
+
 library(ATACseqQC)
 
 htmltags<- tags
