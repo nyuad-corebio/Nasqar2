@@ -16,8 +16,8 @@ tabItem(
                 ),
                 conditionalPanel(
                     condition = "input.data_file_type=='upload_bam_file'",
-                    p(".csv/.txt counts file (tab or comma delimited)"),
-                    fileInput("bam_files", "",
+                    p("File with extensions .bam/.bai"),
+                    fileInput("bam_files", "ssss",
                         accept = c(
                             ".bai",
                             ".bam"
@@ -34,25 +34,26 @@ tabItem(
             ),
             conditionalPanel(
                 # "output.fileUploaded",
-                condition = "input.data_file_type=='example_bam_file'",
+                condition = "output.bamfiles_uploaded",
                 box(
-                    title = "ATACseqQC  Parameters", solidHeader = T, status = "primary", width = 12, collapsible = T, id = "createGoBox", collapsed = T,
-                    wellPanel(
+                    title = "ATACseqQC  Parameters", solidHeader = T, status = "primary", width = 12, collapsible = T, id = "qc_parameters", collapsed = T,
+                    
                         column(
                             12,
                             selectInput("bs_genome_input", "Reference genome:", choices = NULL, selected = NULL)
                         ),
-                        column(
-                            12,
-                            selectInput("tx_db_input", "TxDb:", choices = c(""), selected = NULL)
-                        ),
-                        column(
-                            12,
-                            selectInput("phast_cons_input", "PhastCons:", choices = NULL, selected = NULL)
-                        ),
-                        # tags$div(class = "clearBoth")
-                    ),
-                    actionButton("initGo", "RUN QC2", class = "btn-info", style = "width: 100%")
+                        # column(
+                        #     12,
+                        #     selectInput("tx_db_input", "TxDb:", choices = c(""), selected = NULL)
+                        # ),
+                        # column(
+                        #     12,
+                        #     selectInput("phast_cons_input", "PhastCons:", choices = NULL, selected = NULL)
+                        # ),
+                       
+                    
+                    actionButton("initQC", "Initialize QC", class = "btn-info btn-success", style = "width: 100%"),
+                     tags$div(class = "clearBoth"),
                 )
             )
             # actionButton("run_deseq2", "Run DESeq2",

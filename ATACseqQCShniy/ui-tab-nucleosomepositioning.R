@@ -58,48 +58,67 @@ tabItem(
                 6,
                 wellPanel(
                     h3('Promoter/Transcript body (PT) score'),
-                    plotOutput("plot_pt_score"))
+                    withSpinner(plotOutput("plot_pt_score")))
             ),
             column(
                 6,
                 wellPanel(
                     h3('Nucleosome Free Regions (NFR) score'),
-                    plotOutput("plot_nfr_score"))
+                    withSpinner(plotOutput("plot_nfr_score")))
             ),
             column(
             6,
-            wellPanel(plotOutput("plot_tssre_score"))
+            wellPanel(
+                h3('TSSR score'),
+                withSpinner(plotOutput("plot_tssre_score")))
             )
             
         )),
         
         column(
             6,
-            wellPanel(plotOutput("plotCumulativePercentage"))
+            wellPanel(
+                h3('Cumulative percentage of tag allocation in nucleosome-free and mononucleosome bam files.'),
+                withSpinner(plotOutput("plotCumulativePercentage")))
+        ),
+            column(
+            6,
+            wellPanel(
+                h3('Distribution of nucleosome-free and nucleosome-bound regions'),
+                withSpinner(plotOutput("plot_signals_tss")))
+        ),
+        
+        column(
+            7,
+            wellPanel(
+                h3('plot_featureAlignedHeatmap'),
+                withSpinner(plotOutput("plot_featureAlignedHeatmap")))
         ),
         column(
             7,
-            wellPanel(plotOutput("plot_featureAlignedHeatmap"))
+            wellPanel(
+                h3('plot_signals'),
+                withSpinner(plotOutput("plot_signals")))
         ),
         column(
             7,
-            wellPanel(plotOutput("plot_signals"))
+            wellPanel(
+                h3('plot_Footprints'),
+                withSpinner(plotOutput("plot_Footprints")))
+        ),
+       
+        column(
+            7,
+            wellPanel(
+                h3('Aggregate ATAC-seq Fragment Midpoint vs. Length for a given motif generated over binding sites
+within the genome'),
+                withSpinner(plotOutput("plot_vp")))
         ),
         column(
             7,
-            wellPanel(plotOutput("plot_Footprints"))
-        ),
-        column(
-            7,
-            wellPanel(plotOutput("plot_segmentation"))
-        ),
-        column(
-            7,
-            wellPanel(plotOutput("plot_vp"))
-        ),
-        column(
-            7,
-            wellPanel(plotOutput("plot_distanceDyad"))
+            wellPanel(
+                h3('Distance of potential nucleosome dyad and the linear model for V'),
+                withSpinner(plotOutput("plot_distanceDyad")))
         )
 
 

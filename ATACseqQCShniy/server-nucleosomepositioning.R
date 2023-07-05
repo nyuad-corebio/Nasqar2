@@ -1,14 +1,42 @@
 
 
 
+
+tx_db_list <- list(
+    "BSgenome.Hsapiens.UCSC.hg19" = c("TxDb.Hsapiens.UCSC.hg19.knownGene"),
+    "BSgenome.Mmusculus.UCSC.mm10"=c("TxDb.Mmusculus.UCSC.mm10.knownGene"),
+    "BSgenome.Drerio.UCSC.danRer11"=c("TxDb.Drerio.UCSC.danRer11.refGene"),
+    "BSgenome.Celegans.UCSC.ce11" = c("TxDb.Celegans.UCSC.ce11.refGene")
+)
+phast_cons_list <- list("BSgenome.Hsapiens.UCSC.hg19" = c("phastCons100way.UCSC.hg19"))
+
+
+
+bamfile_path <- reactive({
+
+    if (input$data_file_type == "example_bam_file") {
+        bamfile <- file.path(my_values$base_dir,my_values$samples_df[input$sel_sample_for_npositioning, 'BamFile'])
+    } else {
+        bafiles <- input$bam_files
+    }
+})
+
 observeEvent(input$sel_sample_for_npositioning, {
+
+    # output$plot_vp
+    # output$plot_distanceDyad
+    # output$plot_featureAlignedHeatmap
+    # output$plot_nfr_score
+    # output$plot_Footprints
+    # output$plot_vp
+    # output$p
 
     print('next_parameter_npos_qc')
     req(input$sel_sample_for_npositioning != '')
-
+    # library(input$bs_genome_input, character.only = T)
     # bamfile <- my_values$bamfile
     print('sel_sample_for_npositioning')
-    bamfile <- paste0(my_values$base_dir, '/',my_values$samples_df[input$sel_sample_for_npositioning, 'BamFile'])
+    bamfile <- file.path(my_values$base_dir,my_values$samples_df[input$sel_sample_for_npositioning, 'BamFile'])
         # Create a BamFile object
 
         print(bamfile)
@@ -51,10 +79,11 @@ inputDataReactive <- eventReactive(input$run_qc, {
 
     js$addStatusIcon("nucleosomepositioning_tab", "loading")
 
+    library(tx_db_list[[input$bs_genome_input]], character.only = T)
 
     tags_integer_types <- input$sel_tag_integer_type
     tags_char_types <- input$sel_tag_char_type
-    bamfile <- paste0(my_values$base_dir, '/',my_values$samples_df[input$sel_sample_for_npositioning, 'BamFile'])
+    bamfile <- file.path(my_values$base_dir,my_values$samples_df[input$sel_sample_for_npositioning, 'BamFile'])
 
     # possibleTag <- list(
     #     "integer" = c(
@@ -109,7 +138,7 @@ inputDataReactive <- eventReactive(input$run_qc, {
 
 
     ## shift the coordinates of 5'ends of alignments in the bam file
-    library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+    # library(TxDb.Hsapiens.UCSC.hg19.knownGene)
     ## if you don't have an available TxDb, please refer
     ## GenomicFeatures::makeTxDbFromGFF to create one from gff3 or gtf file.
     # seqlev <- "chr1" ## subsample data for quick run
@@ -121,22 +150,36 @@ inputDataReactive <- eventReactive(input$run_qc, {
     # library(input$tx_db_input, character.only = T)
     # txs <- transcripts(get(input$tx_db_input))
 
-    library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+    # library(TxDb.Hsapiens.UCSC.hg19.knownGene)
     ## if you don't have an available TxDb, please refer
     ## GenomicFeatures::makeTxDbFromGFF to create one from gff3 or gtf file.
     seqlev <- input$sel_chromosome ## subsample data for quick run
-    seqinformation <- seqinfo(TxDb.Hsapiens.UCSC.hg19.knownGene)
+    
+    txb <- tx_db_list[[input$bs_genome_input]]
+
+
+
+    seqinformation <- seqinfo(get(txb))
+    # seqinformation <- seqinfo(TxDb.Hsapiens.UCSC.hg19.knownGene)
     print(seqinformation)
     which <- as(seqinformation[seqlev], "GRanges")
     print(which)
     gal <- readBamFile(bamfile, tag = ntags, which = which, asMates = TRUE, bigFile = TRUE)
     
-    outPath <- tempdir(check=TRUE)
-    files <- list.files(outPath, full.names = T, recursive= TRUE)
-    file.remove(files)
+    outPath <-  tempdir()
+    
 
     outPath <- paste0(file.path(outPath, input$sel_sample_for_npositioning))
     dir.create(outPath)
+
+    files <- list.files(outPath, full.names = T, recursive= TRUE)
+    file.remove(files)
+    
+
+
+
+
+    
 
     print('tempdir')
     print(dir(outPath))
@@ -146,29 +189,95 @@ inputDataReactive <- eventReactive(input$run_qc, {
     print('shiftGAlignmentsList')
     print(dir(outPath))
 
-       
-    library(input$tx_db_input, character.only = T)
-    txs <- transcripts(get(input$tx_db_input))
+    tx_db <- tx_db_list[[input$bs_genome_input]]
+    library(tx_db, character.only = T)
+    txs <- transcripts(get(tx_db))
 
 
-    library(BSgenome.Hsapiens.UCSC.hg19)
-    library(phastCons100way.UCSC.hg19)
+    # library(BSgenome.Hsapiens.UCSC.hg19)
+    # library(phastCons100way.UCSC.hg19)
     ## run program for chromosome 1 only
     txs1 <- txs[seqnames(txs) %in% input$sel_chromosome]
-    genome <- Hsapiens
+    genome <-  get(unlist(strsplit(input$bs_genome_input, '\\.'))[[2]])
     ## split the reads into NucleosomeFree, mononucleosome,
     ## dinucleosome and trinucleosome.
     ## and save the binned alignments into bam files.
     objs <- splitGAlignmentsByCut(gal1,
-        txs = txs1, genome = genome, outPath = outPath,
-        conservation = phastCons100way.UCSC.hg19
+        txs = txs1, genome = genome, outPath = outPath
+        # conservation = phastCons100way.UCSC.hg19
     )
 
 
 
 
     my_values$outPath <- outPath
-    return(list("gal1" = gal1, "txs"=txs))
+
+
+    bamfile <- my_values$bamfile
+    outPath <- my_values$outPath
+
+    bamfiles <- file.path(outPath,
+                    c("NucleosomeFree.bam",
+                    "mononucleosome.bam",
+                    "dinucleosome.bam",
+                    "trinucleosome.bam"))
+
+    TSS <- promoters(txs, upstream=0, downstream=1)
+    TSS <- unique(TSS)
+    ## estimate the library size for normalization
+    (librarySize <- estLibSize(bamfiles))
+    NTILE <- 101
+    dws <- ups <- 1010
+    sigs <- enrichedFragments(
+        gal = objs[c(
+            "NucleosomeFree",
+            "mononucleosome",
+            "dinucleosome",
+            "trinucleosome"
+        )],
+        TSS = TSS,
+        librarySize = librarySize,
+        seqlev = seqlev,
+        TSS.filter = 0.5,
+        n.tile = NTILE,
+        upstream = ups,
+        downstream = dws
+    )
+    ## log2 transformed signals
+    sigs.log2 <- lapply(sigs, function(.ele) log2(.ele + 1))
+
+
+    # return (list('sigs'=sigs, 'TSS'=TSS, 'dws'=dws, 'ups'=ups, 'NTILE'=NTILE))
+
+    CTCF <- query(MotifDb, c("CTCF"))
+    CTCF <- as.list(CTCF)
+    print(CTCF[[1]], digits=2)
+
+    
+    
+    # library(BSgenome.Hsapiens.UCSC.hg19)
+    # library(input$bs_genome_input, character.only = T)
+
+
+    genome <-  get(unlist(strsplit(input$bs_genome_input, '\\.'))[[2]])
+
+
+    factorFootprints_sigs <- factorFootprints(shiftedBamfile, pfm=CTCF[[1]], 
+                         genome=genome, ## Don't have a genome? ask ?factorFootprints for help
+                         min.score="90%", seqlev=seqlev,
+                         upstream=100, downstream=100)
+
+    vp <- vPlot(shiftedBamfile, pfm=CTCF[[1]], 
+        genome=genome, min.score="90%", seqlev=seqlev,
+        upstream=200, downstream=200, 
+        ylim=c(30, 250), bandwidth=c(2, 1))
+
+
+
+
+    js$addStatusIcon("nucleosomepositioning_tab", "done")
+
+    return(list("gal1" = gal1, "txs"=txs, 'objs'=objs, 'sigs_enrichedFragments'=sigs, 'TSS'=TSS, 'dws'=dws, 'ups'=ups, 'NTILE'=NTILE, 'genome'=genome, 'CTCF'=CTCF, 'factorFootprints_sigs'=factorFootprints_sigs, 'vp'=vp))
 })
 
 output$plot_pt_score <- renderPlot({
@@ -190,8 +299,10 @@ output$plot_pt_score <- renderPlot({
 
 output$plot_nfr_score <- renderPlot({
     gal1 <- inputDataReactive()$gal1
-    library(input$tx_db_input, character.only = T)
-    txs <- transcripts(get(input$tx_db_input))
+    # library(input$tx_db_input, character.only = T)
+    # txs <- transcripts(get(input$tx_db_input))
+    
+    txs <- inputDataReactive()$txs
     nfr <- NFRscore(gal1, txs)
     plot(nfr$log2meanCoverage, nfr$NFR_score,
         xlab = "log2 mean coverage",
@@ -235,9 +346,12 @@ output$plotCumulativePercentage <- renderPlot({
 
     library(ChIPpeakAnno)
 
+    txb <- tx_db_list[[input$bs_genome_input]]
 
 
-    seqinformation <- seqinfo(TxDb.Hsapiens.UCSC.hg19.knownGene)
+
+    seqinformation <- seqinfo(get(txb))
+
     outPath <- my_values$outPath
     bamfiles <- file.path(
         outPath,
@@ -255,19 +369,21 @@ output$plotCumulativePercentage <- renderPlot({
 })
 
 
-output$plot_featureAlignedHeatmap <- renderPlot({
-
-    bamfiles <- file.path(outPath,
-                     c("NucleosomeFree.bam",
-                     "mononucleosome.bam",
-                     "dinucleosome.bam",
-                     "trinucleosome.bam"))
+feature_aligned_heatmap_rt_object <- reactive({
+       
 
     seqlev <- input$sel_chromosome 
     gal1 <- inputDataReactive()$gal1
     txs <- inputDataReactive()$txs
+    objs <-  inputDataReactive()$objs
     bamfile <- my_values$bamfile
     outPath <- my_values$outPath
+
+    bamfiles <- file.path(outPath,
+                    c("NucleosomeFree.bam",
+                    "mononucleosome.bam",
+                    "dinucleosome.bam",
+                    "trinucleosome.bam"))
 
     TSS <- promoters(txs, upstream=0, downstream=1)
     TSS <- unique(TSS)
@@ -292,25 +408,50 @@ output$plot_featureAlignedHeatmap <- renderPlot({
     )
     ## log2 transformed signals
     sigs.log2 <- lapply(sigs, function(.ele) log2(.ele + 1))
+
+
+    return (list('sigs'=sigs, 'TSS'=TSS, 'dws'=dws, 'ups'=ups, 'NTILE'=NTILE))
+})
+
+output$plot_signals_tss <- renderPlot({
+    sigs <- inputDataReactive()$sigs_enrichedFragments
+    TSS <- inputDataReactive()$TSS
+    ups <- inputDataReactive()$ups
+    dws <- inputDataReactive()$dws
+    NTILE <- inputDataReactive()$NTILE
+
+    featureAlignedHeatmap(sigs.log2, reCenterPeaks(TSS, width=ups+dws),
+                      zeroAt=.5, n.tile=NTILE)
+})
+
+ output$plot_signals <- renderPlot({
+    
+    sigs <- inputDataReactive()$sigs_enrichedFragments
+    TSS <- inputDataReactive()$TSS
+    ups <- inputDataReactive()$ups
+    dws <- inputDataReactive()$dws
+    NTILE <- inputDataReactive()$NTILE
+    ## get signals normalized for nucleosome-free and nucleosome-bound regions.
+    out <- featureAlignedDistribution(sigs, 
+                                reCenterPeaks(TSS, width=ups+dws),
+                                zeroAt=.5, n.tile=NTILE, type="l", 
+                                ylab="Averaged coverage")
+    ## rescale the nucleosome-free and nucleosome signals to 0~1
+    range01 <- function(x){(x-min(x))/(max(x)-min(x))}
+    out <- apply(out, 2, range01)
+    matplot(out, type="l", xaxt="n", 
+            xlab="Position (bp)", 
+            ylab="Fraction of signal")
+    axis(1, at=seq(0, 100, by=10)+1, 
+        labels=c("-1K", seq(-800, 800, by=200), "1K"), las=2)
+    abline(v=seq(0, 100, by=10)+1, lty=2, col="gray")
+})
+
+output$plot_featureAlignedHeatmap <- renderPlot({
+
+
     # plot heatmap
-
-    output$plot_signals <- renderPlot({
-
-        ## get signals normalized for nucleosome-free and nucleosome-bound regions.
-        out <- featureAlignedDistribution(sigs, 
-                                    reCenterPeaks(TSS, width=ups+dws),
-                                    zeroAt=.5, n.tile=NTILE, type="l", 
-                                    ylab="Averaged coverage")
-        ## rescale the nucleosome-free and nucleosome signals to 0~1
-        range01 <- function(x){(x-min(x))/(max(x)-min(x))}
-        out <- apply(out, 2, range01)
-        matplot(out, type="l", xaxt="n", 
-                xlab="Position (bp)", 
-                ylab="Fraction of signal")
-        axis(1, at=seq(0, 100, by=10)+1, 
-            labels=c("-1K", seq(-800, 800, by=200), "1K"), las=2)
-        abline(v=seq(0, 100, by=10)+1, lty=2, col="gray")
-    })
+    sigs <- inputDataReactive()$factorFootprints_sigs
 
     featureAlignedHeatmap(sigs.log2, reCenterPeaks(TSS, width = ups + dws),
         zeroAt = .5, n.tile = NTILE
@@ -318,61 +459,94 @@ output$plot_featureAlignedHeatmap <- renderPlot({
 })
 
 
-output$plot_Footprints <- renderPlot({
+foot_print_rt_object <- reactive({
+    input$run_qc
     inputDataReactive()
 
     isolate({
-        seqlev <- input$sel_chromosome 
+        seqlev <- input$sel_chromosome
     })
     
     outPath <- my_values$outPath
     shiftedBamfile <- file.path(outPath, "shifted.bam")
-    library(MotifDb)
+    
     CTCF <- query(MotifDb, c("CTCF"))
     CTCF <- as.list(CTCF)
     print(CTCF[[1]], digits=2)
-    library(BSgenome.Hsapiens.UCSC.hg19)
-    genome <- Hsapiens
-    sigs <- factorFootprints(shiftedBamfile, pfm=CTCF[[1]], 
+
+    
+    
+    # library(BSgenome.Hsapiens.UCSC.hg19)
+    # library(input$bs_genome_input, character.only = T)
+
+
+    genome <-  get(unlist(strsplit(input$bs_genome_input, '\\.'))[[2]])
+
+
+    factorFootprints_sigs <- factorFootprints(shiftedBamfile, pfm=CTCF[[1]], 
+                         genome=genome, ## Don't have a genome? ask ?factorFootprints for help
+                         min.score="90%", seqlev=seqlev,
+                         upstream=100, downstream=100)
+
+    vp <- vPlot(shiftedBamfile, pfm=CTCF[[1]], 
+        genome=genome, min.score="90%", seqlev=seqlev,
+        upstream=200, downstream=200, 
+        ylim=c(30, 250), bandwidth=c(2, 1))
+
+
+
+    return (list('genome'=genome, 'CTCF'=CTCF, 'factorFootprints_sigs'=factorFootprints_sigs, 'vp'=vp))
+
+
+})
+
+
+output$plot_Footprints <- renderPlot({
+
+     isolate({
+        seqlev <- input$sel_chromosome
+    })
+    
+    outPath <- my_values$outPath
+    shiftedBamfile <- file.path(outPath, "shifted.bam")
+
+    CTCF <- foot_print_rt_object()$CTCF
+     genome <- foot_print_rt_object()$genome
+
+    factorFootprints(shiftedBamfile, pfm=CTCF[[1]], 
                          genome=genome, ## Don't have a genome? ask ?factorFootprints for help
                          min.score="90%", seqlev=seqlev,
                          upstream=100, downstream=100)
 })
 
-output$plot_featureAlignedHeatmap <- renderPlot({
-    input$run_qc
-    seqlev <- input$sel_chromosome 
+
+
+
+output$plot_distanceDyad <- renderPlot({
+    vp <- foot_print_rt_object()$vp
+    distanceDyad(vp, pch=20, cex=.5)
+})
+
+output$plot_vp <- renderPlot({
+    isolate({
+        seqlev <- input$sel_chromosome
+    })
+    
     outPath <- my_values$outPath
     shiftedBamfile <- file.path(outPath, "shifted.bam")
-    library(MotifDb)
-    CTCF <- query(MotifDb, c("CTCF"))
-    CTCF <- as.list(CTCF)
-    print(CTCF[[1]], digits=2)
-    library(BSgenome.Hsapiens.UCSC.hg19)
-    genome <- Hsapiens
 
-    inputDataReactive()
-    js$addStatusIcon("nucleosomepositioning_tab", "done")
-    sigs <- factorFootprints(shiftedBamfile, pfm=CTCF[[1]], 
-                         genome=genome, ## Don't have a genome? ask ?factorFootprints for help
-                         min.score="90%", seqlev=seqlev,
-                         upstream=100, downstream=100)
+    CTCF<-inputDataReactive()$CTCF
+    genome<-inputDataReactive()$genome
+    vPlot(shiftedBamfile, pfm=CTCF[[1]], 
+        genome=genome, min.score="90%", seqlev=seqlev,
+        upstream=200, downstream=200, 
+        ylim=c(30, 250), bandwidth=c(2, 1))
+})
 
-    output$plot_segmentation <-  renderPlot({
-        sigs$Profile.segmentation
-    })
+output$plot_featureAlignedHeatmap <- renderPlot({
 
-    output$plot_vp <- renderPlot({
-        vp <- vPlot(shiftedBamfile, pfm=CTCF[[1]], 
-            genome=genome, min.score="90%", seqlev=seqlev,
-            upstream=200, downstream=200, 
-            ylim=c(30, 250), bandwidth=c(2, 1))
 
-         output$plot_distanceDyad <- renderPlot({
-         distanceDyad(vp, pch=20, cex=.5)
-         })
-    })
-   
+    sigs <- inputDataReactive()$factorFootprints_sigs
 
 
     featureAlignedHeatmap(sigs$signal, 
@@ -381,8 +555,6 @@ output$plot_featureAlignedHeatmap <- renderPlot({
                       annoMcols="score",
                       sortBy="score",
                       n.tile=ncol(sigs$signal[[1]]))
-
-
    
 })
 
