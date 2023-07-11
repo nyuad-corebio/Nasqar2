@@ -1,7 +1,7 @@
 #wget wget --no-check-certificate 'https://drive.google.com/u/1/uc?id=1dUE8CquO56CX8RgDnrCpU1D24nLV3UYJ&export=download' -O data.zip
 
 
-export fileid=10aLkdPclBecPDxSy4z1_EVwi5e0mhXe7
+export fileid=1dUE8CquO56CX8RgDnrCpU1D24nLV3UYJ
 export filename=data.zip
 
 ## WGET ##
