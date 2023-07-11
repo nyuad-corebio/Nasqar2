@@ -73,9 +73,26 @@ observeEvent(input$sel_sample_for_npositioning, {
 
 })
 
+my_values$done <- FALSE
+output$task_done <- reactive({
+    if(my_values$done){
+        return(TRUE)
+    } else {
+        return(FALSE)
+    }
+   
+})
+
+outputOptions(output, "task_done", suspendWhenHidden = FALSE)
+
+
 inputDataReactive <- eventReactive(input$run_qc, {
 
     print('inputDataReactive')
+    isolate({
+         my_values$done<-FALSE
+    })
+
 
     js$addStatusIcon("nucleosomepositioning_tab", "loading")
 
@@ -246,10 +263,10 @@ inputDataReactive <- eventReactive(input$run_qc, {
     ## log2 transformed signals
     sigs.log2 <- lapply(sigs, function(.ele) log2(.ele + 1))
 
-
+   
     # return (list('sigs'=sigs, 'TSS'=TSS, 'dws'=dws, 'ups'=ups, 'NTILE'=NTILE))
 
-    CTCF <- query(MotifDb, c("CTCF"))
+    CTCF <- query(MotifDb, c(input$motif_value))
     CTCF <- as.list(CTCF)
     print(CTCF[[1]], digits=2)
 
@@ -276,9 +293,20 @@ inputDataReactive <- eventReactive(input$run_qc, {
 
 
     js$addStatusIcon("nucleosomepositioning_tab", "done")
+    isolate({
+         my_values$done<-TRUE
+    })
 
     return(list("gal1" = gal1, "txs"=txs, 'objs'=objs, 'sigs_enrichedFragments'=sigs, 'TSS'=TSS, 'dws'=dws, 'ups'=ups, 'NTILE'=NTILE, 'genome'=genome, 'CTCF'=CTCF, 'factorFootprints_sigs'=factorFootprints_sigs, 'vp'=vp))
 })
+
+output$empty_txt_output <- renderText({
+    inputDataReactive()
+
+    ""
+  })
+
+
 
 output$plot_pt_score <- renderPlot({
     # files will be output into outPath
@@ -419,7 +447,7 @@ output$plot_signals_tss <- renderPlot({
     ups <- inputDataReactive()$ups
     dws <- inputDataReactive()$dws
     NTILE <- inputDataReactive()$NTILE
-
+    sigs.log2 <- lapply(sigs, function(.ele) log2(.ele + 1))
     featureAlignedHeatmap(sigs.log2, reCenterPeaks(TSS, width=ups+dws),
                       zeroAt=.5, n.tile=NTILE)
 })
@@ -470,7 +498,7 @@ foot_print_rt_object <- reactive({
     outPath <- my_values$outPath
     shiftedBamfile <- file.path(outPath, "shifted.bam")
     
-    CTCF <- query(MotifDb, c("CTCF"))
+    CTCF <- query(MotifDb, c(input$motif_value))
     CTCF <- as.list(CTCF)
     print(CTCF[[1]], digits=2)
 
@@ -490,7 +518,7 @@ foot_print_rt_object <- reactive({
 
     vp <- vPlot(shiftedBamfile, pfm=CTCF[[1]], 
         genome=genome, min.score="90%", seqlev=seqlev,
-        upstream=200, downstream=200, 
+        upstream=200, downstream=200,  draw = TRUE,
         ylim=c(30, 250), bandwidth=c(2, 1))
 
 

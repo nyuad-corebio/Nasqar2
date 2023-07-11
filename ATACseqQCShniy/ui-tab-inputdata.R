@@ -17,7 +17,7 @@ tabItem(
                 conditionalPanel(
                     condition = "input.data_file_type=='upload_bam_file'",
                     p("File with extensions .bam/.bai"),
-                    fileInput("bam_files", "ssss",
+                    fileInput("bam_files", "",
                         accept = c(
                             ".bai",
                             ".bam"

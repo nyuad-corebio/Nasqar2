@@ -1,7 +1,9 @@
 observe({
-    shinyjs::hide(selector = "a[data-value=\"librarycomplexity_tab\"]")
+   
     shinyjs::hide(selector = "a[data-value=\"fragmentsize_tab\"]")
     shinyjs::hide(selector = "a[data-value=\"nucleosomepositioning_tab\"]")
+    shinyjs::hide(selector = "a[data-value=\"heatmap_tab\"]")
+    shinyjs::hide(selector = "a[data-value=\"librarycomplexity_tab\"]")
     
 })
 
@@ -72,6 +74,7 @@ observeEvent(input$bs_genome_input, {
 # })
 
 input_files_reactive <- reactive({
+
     shiny::validate(
         need(identical(input$data_file_type, "example_bam_file") | (!is.null(input$bam_files)),
             message = "Please select a file"
@@ -107,7 +110,9 @@ input_files_reactive <- reactive({
             # print(str(row))
             datapath <- row['datapath']
             name <- row['name']
-            file.copy(datapath, file.path(base_dir, name))
+            file.remove(file.path(base_dir, name))
+            file.symlink(datapath, file.path(base_dir, name))
+            # file.copy(datapath, file.path(base_dir, name))
             # print(name)
         })
     } else {
@@ -199,13 +204,15 @@ output$bam_samples_table <-  renderTable({
 }, bordered = TRUE, spacing = "xs", rownames = T)
 
 observeEvent(input$initQC, {
-
-
-    shinyjs::show(selector = "a[data-value=\"librarycomplexity_tab\"]")
+    js$addStatusIcon("input_tab", "loading")
+   
+    
     shinyjs::show(selector = "a[data-value=\"fragmentsize_tab\"]")
     shinyjs::show(selector = "a[data-value=\"nucleosomepositioning_tab\"]")
+    shinyjs::show(selector = "a[data-value=\"heatmap_tab\"]")
+    shinyjs::show(selector = "a[data-value=\"librarycomplexity_tab\"]")
 
-
+   
     # js$collapse("uploadbox")
 
     # output$plot <- renderPlot({

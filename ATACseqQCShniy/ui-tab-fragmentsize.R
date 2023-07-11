@@ -9,7 +9,7 @@ tabItem(
         ),
         column(
             7,
-            plotOutput("plot_fragmentsize")
+            withSpinner(plotOutput("plot_fragmentsize"))
       
             # actionButton("run_deseq2", "Run DESeq2",
             #              class = "btn btn-success",

@@ -6,18 +6,42 @@ library(TxDb.Mmusculus.UCSC.mm10.knownGene)
 library(BSgenome.Hsapiens.UCSC.hg19)
 
 library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+library(ggplot2)
+library(dplyr)
+library(Rsamtools)
+library(GenomicAlignments)
+
+
+#isDuplicate, it is a flag in the BAM alignment records that
+#indicates whether a read is marked as a duplicate. 
+#Duplicates can occur during library preparation or sequencing, and they are typically
+#identified and marked during data processing to avoid bias in downstream analyses.
+
+
 ## input the bamFile from the ATACseqQC package 
+
 
 bamfile <- system.file("extdata", "GL1.bam", 
                         package="ATACseqQC", mustWork=TRUE)
 
                         
-#bamfile <- '/Users/nr83/Downloads/Sammy/Sammy_KO_ATAC_S37_withrg.csorted.cleaned.aligned.bam'
+bamfile <- '/Users/nr83/Downloads/Sammy/Sammy_KO_ATAC_S37_withrg.csorted.cleaned.aligned.bam'
 
 bamfile <- '/Users/nr83/Downloads/Sammy_v2/t.bam'
 
 
+gal <- readGAlignments(bamfile)
 
+gr <- GRanges(seqnames = 'chr1', ranges=ranges(gal)[1:5])
+seq_gal <- readGAlignments(bamfile,param = ScanBamParam(which=gr, what=c('seq','qual')))
+
+mappedReads <- idxstatsBam(bamfile)
+mappedReads <- mappedReads %>% filter(mapped > 0) %>% arrange(desc(mapped)) %>% head(30)
+
+df$Name <- reorder(mappedReads$Name, df$Age) 
+
+
+ggplot(mappedReads, aes(reorder(seqnames,mapped) , mapped, fill=seqnames)) + geom_bar(stat="identity") + coord_flip()
 bamfile.labels <- gsub(".bam", "", basename(bamfile))
 
 

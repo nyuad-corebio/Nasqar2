@@ -6,6 +6,7 @@ library(MotifDb)
 library(GenomicAlignments)
 library(ATACseqQC)
 library(ChIPpeakAnno)
+library(GenomicAlignments)
 
 
 htmltags<- tags
