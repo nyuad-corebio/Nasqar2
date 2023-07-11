@@ -53,6 +53,7 @@ COPY DEApp /opt/nasqar_build/DEApp
 COPY deseq2shiny /opt/nasqar_build/deseq2shiny
 COPY GeneCountMerger /opt/nasqar_build/GeneCountMerger
 COPY NASQAR /opt/nasqar_build/NASQAR
+COPY ATACseqQCShniy /opt/nasqar_build/ATACseqQCShniy
 
 
 WORKDIR /opt/nasqar_build
