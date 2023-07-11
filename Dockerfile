@@ -47,12 +47,12 @@ USER root
 RUN mkdir /opt/nasqar_build
 #ADD NASQAR2/nasqar.tar /opt/nasqar_build/
 
-COPY ClusterProfShinyGSEA /opt/nasqar_build/ClusterProfShinyGSEA
-COPY ClusterProfShinyORA /opt/nasqar_build/ClusterProfShinyORA
-COPY DEApp /opt/nasqar_build/DEApp
-COPY deseq2shiny /opt/nasqar_build/deseq2shiny
-COPY GeneCountMerger /opt/nasqar_build/GeneCountMerger
-COPY NASQAR /opt/nasqar_build/NASQAR
+# COPY ClusterProfShinyGSEA /opt/nasqar_build/ClusterProfShinyGSEA
+# COPY ClusterProfShinyORA /opt/nasqar_build/ClusterProfShinyORA
+# COPY DEApp /opt/nasqar_build/DEApp
+# COPY deseq2shiny /opt/nasqar_build/deseq2shiny
+# COPY GeneCountMerger /opt/nasqar_build/GeneCountMerger
+# COPY NASQAR /opt/nasqar_build/NASQAR
 
 
 WORKDIR /opt/nasqar_build
