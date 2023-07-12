@@ -1,6 +1,9 @@
 
 cp $4  ~/id_rsa
+
+chmod 400  ~/id_rsa
 cp $4  id_rsa
+chmod 400  id_rsa
 
 cat << EOF > config
 Host test 
