@@ -58,9 +58,14 @@ COPY ATACseqQCShniy /opt/nasqar_build/ATACseqQCShniy
 USER shiny
 WORKDIR /home/shiny
 RUN mkdir ~/.ssh
-USER root
-RUN apt-get install sshfs
 
+USER root
+
+RUN apt-get update \
+  && apt-get install sshfs-fuse \
+  && apt-get autoremove -yqq --purge \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 
 WORKDIR /opt/nasqar_build
