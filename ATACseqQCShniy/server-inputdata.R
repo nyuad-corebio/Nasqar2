@@ -170,6 +170,12 @@ input_files_reactive <- reactive({
         # Filter BAM and BMI files
         bam_files <- files[grepl(".bam$", files)]
         bai_files <- files[grepl(".bai$", files)]
+        matching_files <- sapply(bam_files, function(bam_file) {
+          bmi_file <- gsub(".bam$", ".bai", bam_file)
+          bmi_file %in% bai_files
+        })
+        bam_files <- names(matching_files[matching_files == TRUE])
+        bai_files <- stringr::str_replace_all(bam_files, '.bam', '.bai' )
     }
 
             
