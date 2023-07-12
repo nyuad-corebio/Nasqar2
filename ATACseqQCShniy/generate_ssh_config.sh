@@ -17,7 +17,7 @@ mv config ~/.ssh/config
 
 mkdir mnt
 umount mnt
-sshfs   test:$3 mnt 
+sshfs  -o StrictHostKeyChecking=no  test:$3 mnt 
 
 
 
