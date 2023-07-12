@@ -7,7 +7,7 @@ library(GenomicAlignments)
 library(ATACseqQC)
 library(ChIPpeakAnno)
 library(GenomicAlignments)
-
+require(DT)
 
 htmltags<- tags
 ui <- dashboardPage(

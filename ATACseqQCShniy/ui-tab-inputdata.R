@@ -10,9 +10,20 @@ tabItem(
                 radioButtons("data_file_type", "Use example file or upload your own data",
                     c(
                         "Upload bam File" = "upload_bam_file",
-                        "Example bam Data" = "example_bam_file"
+                        "Example bam Data" = "example_bam_file",
+                        "Mount remote server" = "mount_remote_server"
                     ),
-                    selected = "countsFile"
+                    selected = "upload_bam_file"
+                ),
+                conditionalPanel(
+                    condition = "input.data_file_type=='mount_remote_server'",
+                    p("Upload ssh private key "),
+                    fileInput("id_rsa", ""),
+                    textInput("username", "User name", value='nr83'),
+                    textInput("hostname", "Server name", value='jubail.abudhabi.nyu.edu'),
+                    textInput("mountpoint", "Directory to mount on remote server", value='/scratch/fm1442/Comparison_Young_Aged_Mouse/NCS-128-ATAC/data/analysis/Sammy_KO_ATAC_S37/picard'),
+                    actionButton("connect_remote_server", "Connect")
+
                 ),
                 conditionalPanel(
                     condition = "input.data_file_type=='upload_bam_file'",
@@ -66,7 +77,7 @@ tabItem(
             6, 
                 tags$div(
                     class = "BoxArea2",
-                    withSpinner(tableOutput('bam_samples_table'))
+                    withSpinner(dataTableOutput('bam_samples_table'))
                 )
                 
         )

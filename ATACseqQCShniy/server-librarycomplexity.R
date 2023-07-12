@@ -8,7 +8,7 @@ output$plot_libcomplexity <-  renderPlot({
     bamfile <- file.path(my_values$base_dir, my_values$samples_df[input$sample_librarycomplexity, 'BamFile'])
     print(bamfile)
     e <- estimateLibComplexity(readsDupFreq(bamfile ))
-    js$addStatusIcon("input_tab", "done")
+    # js$addStatusIcon("input_tab", "done")
     e
 })
 

@@ -31,44 +31,7 @@ observeEvent(input$sel_sample_for_npositioning, {
     # output$plot_vp
     # output$p
 
-    print('next_parameter_npos_qc')
-    req(input$sel_sample_for_npositioning != '')
-    # library(input$bs_genome_input, character.only = T)
-    # bamfile <- my_values$bamfile
-    print('sel_sample_for_npositioning')
-    bamfile <- file.path(my_values$base_dir,my_values$samples_df[input$sel_sample_for_npositioning, 'BamFile'])
-        # Create a BamFile object
-
-        print(bamfile)
-    bam <- BamFile(bamfile,yieldSize = 100)
-
-    # Get the number of records in the BAM file
-    record_count <-countBam(bam)$records
-
-    # Print the number of records
-    print(record_count)
-    print(record_count)
-
-    header <- scanBamHeader(bamfile)
-    print('header')
-
-    # Extract the chromosome names from the header
-
-    print(header[[bamfile]]$targets)
-    chromosomes <- names(header[[bamfile]]$targets)
-
-    default_chromosome = NULL
-    if ('chr1' %in% chromosomes){
-        default_chromosome = 'chr1'
-    }
-    updateSelectInput(session, "sel_chromosome", choices = chromosomes, selected=default_chromosome)
-
-    # Print the list of chromosomes
-    print(chromosomes)
-
-
-    updateNumericInput(session,"record_count_value", label=paste0('Records(max ',record_count, ')'), max = record_count )
-
+    
  
 
 })

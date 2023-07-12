@@ -1,0 +1,21 @@
+
+cp $4  ~/id_rsa
+cp $4  id_rsa
+
+cat << EOF > config
+Host test 
+    HostName  $2
+    User $1
+    PubKeyAuthentication yes
+    IdentityFile ~/id_rsa
+EOF
+
+mv config ~/.ssh/config
+
+mkdir mnt
+umount mnt
+sshfs   test:$3 mnt 
+
+
+
+
