@@ -55,6 +55,13 @@ COPY GeneCountMerger /opt/nasqar_build/GeneCountMerger
 COPY NASQAR /opt/nasqar_build/NASQAR
 COPY ATACseqQCShniy /opt/nasqar_build/ATACseqQCShniy
 
+USER shiny
+WORKDIR /home/shiny
+RUN mkdir ~/.ssh
+USER root
+RUN apt-get install sshfs
+
+
 
 WORKDIR /opt/nasqar_build
 RUN wget https://github.com/UMMS-Biocore/debrowser/archive/refs/heads/master.zip
