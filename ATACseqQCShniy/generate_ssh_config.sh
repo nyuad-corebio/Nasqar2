@@ -15,8 +15,9 @@ EOF
 
 mv config ~/.ssh/config
 
-mkdir mnt
-umount mnt
+rm -r mnt > /dev/null
+mkdir mnt > /dev/null
+umount mnt > /dev/null
 sshfs  -o StrictHostKeyChecking=no  test:$3 mnt 
 
 
