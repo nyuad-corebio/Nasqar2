@@ -292,7 +292,7 @@ observeEvent(input$initQC, {
         default_chromosome = 'chr1'
     }
     updateSelectInput(session, "sel_chromosome", choices = chromosomes, selected=default_chromosome)
-
+    updateSelectInput(session, "sel_chromosome_heatmap_tab", choices = chromosomes, selected=default_chromosome)
     # Print the list of chromosomes
     print(chromosomes)
 
