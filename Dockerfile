@@ -63,7 +63,7 @@ RUN mkdir ~/.ssh
 USER root
 
 RUN apt-get update \
-  && apt-get install sshfs \
+  && apt-get install sshfs -y --no-install-recommends \
   && apt-get autoremove -yqq --purge \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
