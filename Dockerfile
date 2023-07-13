@@ -30,17 +30,18 @@ RUN conda clean --all -y
 RUN conda run -n nasqar_env R -e "install.packages(c('stringi', 'GOplot', 'wordcloud2'), repos='http://cran.rstudio.com/')"
 RUN conda run -n nasqar_env R -e "devtools::install_github('YuLab-SMU/clusterProfiler')"
 RUN conda run -n nasqar_env R -e "BiocManager::install(c('org.Hs.eg.db','org.Mm.eg.db','org.Rn.eg.db','org.Sc.sgd.db','org.Dm.eg.db','org.At.tair.db','org.Dr.eg.db','org.Bt.eg.db','org.Ce.eg.db','org.Gg.eg.db','org.Cf.eg.db','org.Ss.eg.db','org.Mmu.eg.db','org.EcK12.eg.db','org.Xl.eg.db','org.Pt.eg.db','org.Ag.eg.db','org.Pf.plasmo.db','org.EcSakai.eg.db'))"
-RUN conda run -n nasqar_env R -e "BiocManager::install(c('ATACseqQC','ChIPpeakAnno', 'MotifDb', 'GenomicAlignments'))"
-
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Hsapiens.UCSC.hg19', 'TxDb.Hsapiens.UCSC.hg19.knownGene'))"
-
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Celegans.UCSC.ce1', 'TxDb.Celegans.UCSC.ce11.refGene'))"
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Drerio.UCSC.danRer11', 'TxDb.Drerio.UCSC.danRer11.refGene'))"
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Mmusculus.UCSC.mm10', 'TxDb.Hsapiens.UCSC.hg19.knownGene'))"
-
 RUN conda run -n nasqar_env R -e "devtools::install_github('smin95/smplot2')"
 ##Seurat wizard
 RUN conda run -n nasqar_env R -e "devtools::install_github('nyuad-corebio/seuratv3wizard')"
+RUN conda run -n nasqar_env R -e "BiocManager::install(c('ATACseqQC'))"
+RUN conda run -n nasqar_env R -e "BiocManager::install(c('ChIPpeakAnno', 'MotifDb', 'GenomicAlignments'))"
+
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Hsapiens.UCSC.hg19', 'TxDb.Hsapiens.UCSC.hg19.knownGene'))"
+
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Celegans.UCSC.ce11', 'TxDb.Celegans.UCSC.ce11.refGene'))"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Drerio.UCSC.danRer11', 'TxDb.Drerio.UCSC.danRer11.refGene'))"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Mmusculus.UCSC.mm10', 'TxDb.Mmusculus.UCSC.mm10.knownGene"'))"
+
 
 USER root
 
@@ -62,7 +63,7 @@ RUN mkdir ~/.ssh
 USER root
 
 RUN apt-get update \
-  && apt-get install sshfs-fuse \
+  && apt-get install sshfs \
   && apt-get autoremove -yqq --purge \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
