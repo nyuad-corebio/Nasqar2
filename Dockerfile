@@ -36,17 +36,17 @@ RUN conda run -n nasqar_env R -e "devtools::install_github('nyuad-corebio/seurat
 RUN conda run -n nasqar_env R -e "BiocManager::install(c('ATACseqQC'))"
 RUN conda run -n nasqar_env R -e "BiocManager::install(c('ChIPpeakAnno', 'MotifDb', 'GenomicAlignments'))"
 
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Hsapiens.UCSC.hg19'), ask = FALSE)"
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Hsapiens.UCSC.hg19.knownGene'), ask = FALSE)"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Hsapiens.UCSC.hg19'), ask = FALSE, update = FALSE)"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Hsapiens.UCSC.hg19.knownGene'), ask = FALSE, update = FALSE)"
 
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Celegans.UCSC.ce11'), ask = FALSE)"
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Celegans.UCSC.ce11.refGene'), ask = FALSE)"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Celegans.UCSC.ce11'), ask = FALSE, update = FALSE)"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Celegans.UCSC.ce11.refGene'), ask = FALSE, update = FALSE)"
 
 RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Drerio.UCSC.danRer11'), ask = FALSE)"
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Drerio.UCSC.danRer11.refGene'), ask = FALSE)"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Drerio.UCSC.danRer11.refGene'), ask = FALSE, update = FALSE)"
 
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Mmusculus.UCSC.mm10'), ask = FALSE)"
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Mmusculus.UCSC.mm10.knownGene'), ask = FALSE)"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Mmusculus.UCSC.mm10'), ask = FALSE, update = FALSE)"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Mmusculus.UCSC.mm10.knownGene'), ask = FALSE), update = FALSE"
 
 
 USER root
