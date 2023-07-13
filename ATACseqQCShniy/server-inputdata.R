@@ -55,12 +55,13 @@ my_values <- reactiveValues()
 my_values$mounted_dir <- FALSE
 
 observeEvent(input$connect_remote_server, {
+
   
   print(input$username)
   print(input$hostname)
   print(input$mountpoint)
   print(input$id_rsa$datapath)
-  
+  my_values$mounted_dir <- FALSE
   
   
   system(paste("sh generate_ssh_config.sh ", input$username, " ", 
