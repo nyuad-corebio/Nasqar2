@@ -40,7 +40,7 @@ RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Hsapiens.UCS
 
 RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Celegans.UCSC.ce11', 'TxDb.Celegans.UCSC.ce11.refGene'))"
 RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Drerio.UCSC.danRer11', 'TxDb.Drerio.UCSC.danRer11.refGene'))"
-RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Mmusculus.UCSC.mm10', 'TxDb.Mmusculus.UCSC.mm10.knownGene"'))"
+RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Mmusculus.UCSC.mm10', 'TxDb.Mmusculus.UCSC.mm10.knownGene'))"
 
 
 USER root
