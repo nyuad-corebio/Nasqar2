@@ -13,24 +13,64 @@ tabItem(
                             selectInput("sel_sample_for_npositioning", "Select sample", choices = NULL, selected = NULL)
                         ),
                         column(
-                            2,
+                            1,
                             selectInput("sel_chromosome",
                                 label = "Chromosome", # or Ensembl ID",
                                 choices = NULL,
                             )
                         ),
+                        # Records
                         column(
-                            2,
-                            numericInput("record_count_value", "Records", value = 100, min = 0)
+                            3,
+                            numericInput("record_count_value", span(
+                            "Alignments to process",
+                            span(
+                                class = "TOOLTIP1",
+                                `data-toggle` = "tooltip", `data-placement` = "right",
+                                title = "A tooltip",
+                                icon("question-circle","fa-solid")
+                            )
+                        ), value = 100, min = 0),
+                        htmltags$script(
+        "
+        $('#record_count_value').on('shiny:updateinput', function(e){
+            setTimeout(function(){$('#record_count_value-label').html($('#record_count_value-label').text())}, 0.1);
+        });
+        "
+    )
                         ),
                         column(
                             2,
                             textInput("motif_value", "Motif of interest", value = "CTCF")
                         ),
+                        span(
+                            "",
+                            span(
+                                class = "TOOLTIP1",
+                                `data-toggle` = "tooltip", `data-placement` = "right",
+                                title = "A tooltip",
+                                icon("question-circle","fa-solid")
+                            )
+                        ),
+                        # Integer type tags
                         column(
                             6,
                             selectizeInput("sel_tag_integer_type",
-                                label = "Integer type tags", # or Ensembl ID",
+                            span(
+                                "SAM integer type flags",
+    #                             tags$a("SAM integer type flags", target = "_blank",
+    #   href = "https://samtools.github.io/hts-specs/SAMtags.pdf"),
+                               
+                              tags$a(
+                            span(
+                                class = "TOOLTIP1",
+                                `data-toggle` = "tooltip", `data-placement` = "right",
+                                title = "For more information about sam flags click herel",
+                                icon("question-circle","fa-solid")), target = "_blank",
+                                href = "https://samtools.github.io/hts-specs/SAMtags.pdf"
+                            )
+                        )
+                               , # or Ensembl ID",
                                 choices = NULL,
                                 multiple = TRUE,
                                 options = list(
@@ -39,10 +79,11 @@ tabItem(
                                 )
                             )
                         ),
+                        # Character type tags
                         column(
                             6,
                             selectizeInput("sel_tag_char_type",
-                                label = "Character type tags", # or Ensembl ID",
+                                label = "SAM charter type flags", # or Ensembl ID",
                                 choices = NULL,
                                 multiple = TRUE,
                                 options = list(

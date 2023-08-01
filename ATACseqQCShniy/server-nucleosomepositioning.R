@@ -250,7 +250,7 @@ inputDataReactive <- eventReactive(input$run_qc, {
     vp <- vPlot(shiftedBamfile, pfm=CTCF[[1]], 
         genome=genome, min.score="90%", seqlev=seqlev,
         upstream=200, downstream=200, 
-        ylim=c(30, 250), bandwidth=c(2, 1))
+        ylim=c(30, 250), bandwidth=c(2, 1),draw=FALSE)
 
 
 

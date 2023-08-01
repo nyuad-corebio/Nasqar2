@@ -62,3 +62,11 @@ shinyjs.collapse = function(boxid) {
   console.log("collpase")
   $('#' + boxid).closest('.box').find('[data-widget=collapse]').click();
 };
+
+
+
+shinyjs.addtooltip = function()
+{
+  $('[data-toggle=tooltip]').tooltip()
+  
+}

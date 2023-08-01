@@ -201,4 +201,48 @@ a[bubbletooltip]:link, a[bubbletooltip]:visited
   100% {
     box-shadow: inset 0px 0px 0px 30px red;
   }
+}
 
+/* https://stackoverflow.com/questions/75515925/r-shiny-multiple-onhover-popups-each-with-different-css-style
+*/
+
+.tooltip {
+  pointer-events: none;
+}
+.TOOLTIP1 + .tooltip > .tooltip-inner {
+  pointer-events: none;
+  background-color: #73AD21;
+  color: #FFFFFF;
+  border: 1px solid green;
+  padding: 10px;
+  font-size: 25px;
+  font-style: italic;
+  text-align: justify;
+  margin-left: 0;
+  max-width: 1000px;
+}
+.TOOLTIP1 + .tooltip > .arrow::before {
+  border-color: #73AD21;
+}
+.TOOLTIP2 + .tooltip > .tooltip-inner {
+  pointer-events: none;
+  background-color: #933337;
+  color: yellow;
+  border: 2px solid red;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: justify;
+  margin-left: 0;
+  max-width: 1000px;
+}
+.TOOLTIP2 + .tooltip > .arrow::before {
+  border-bottom-color: #933337;
+}
+
+.TOOLTIP1 + .tooltip.right > .tooltip-arrow {
+  border-right-color: #73AD21;
+}
+.TOOLTIP2 + .tooltip.bottom > .tooltip-arrow {
+  border-bottom-color: #933337;
+}
