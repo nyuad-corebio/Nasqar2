@@ -64,7 +64,7 @@ tabItem(
                        
                     
                     actionButton("initQC", "Initialize QC", class = "btn-info btn-success", style = "width: 100%"),
-                     tags$div(class = "clearBoth"),
+                     tags$div(class = "clearBoth")
                 )
             )
             # actionButton("run_deseq2", "Run DESeq2",

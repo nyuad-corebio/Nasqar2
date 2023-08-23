@@ -192,22 +192,22 @@ input_files_reactive <- reactive({
     samples_df <- data.frame(BamFile = bam_files, IndexFile = bai_files, row.names = sample_names)
     my_values$base_dir <- base_dir
     my_values$samples_df <- samples_df
-    tags_integer_types <- c(
-        "AM", "AS", "CM", "CP", "FI", "H0", "H1", "H2",
-        "HI", "IH", "MQ", "NH", "NM", "OP", "PQ", "SM",
-        "TC", "UQ"
-    )
+    # tags_integer_types <- c(
+    #     "AM", "AS", "CM", "CP", "FI", "H0", "H1", "H2",
+    #     "HI", "IH", "MQ", "NH", "NM", "OP", "PQ", "SM",
+    #     "TC", "UQ"
+    # )
 
-    tags_char_types <- c(
-        "BC", "BQ", "BZ", "CB", "CC", "CO", "CQ", "CR",
-        "CS", "CT", "CY", "E2", "FS", "LB", "MC", "MD",
-        "MI", "OA", "OC", "OQ", "OX", "PG", "PT", "PU",
-        "Q2", "QT", "QX", "R2", "RG", "RX", "SA", "TS",
-        "U2"
-    )
+    # tags_char_types <- c(
+    #     "BC", "BQ", "BZ", "CB", "CC", "CO", "CQ", "CR",
+    #     "CS", "CT", "CY", "E2", "FS", "LB", "MC", "MD",
+    #     "MI", "OA", "OC", "OQ", "OX", "PG", "PT", "PU",
+    #     "Q2", "QT", "QX", "R2", "RG", "RX", "SA", "TS",
+    #     "U2"
+    # )
 
-    updateSelectizeInput(session, "sel_tag_integer_type", choices = tags_integer_types, selected = tags_integer_types)
-    updateSelectizeInput(session, "sel_tag_char_type", choices = tags_char_types, selected = tags_char_types)
+    # updateSelectizeInput(session, "sel_tag_integer_type", choices = tags_integer_types, selected = tags_integer_types)
+    # updateSelectizeInput(session, "sel_tag_char_type", choices = tags_char_types, selected = tags_char_types)
 
 
     # library(input$bs_genome_input, character.only = T)
@@ -271,11 +271,11 @@ observeEvent(input$initQC, {
     bam <- BamFile(bamfile, yieldSize = 10000)
 
     # Get the number of records in the BAM file
-    record_count <- countBam(bam)$records
+    #record_count <- countBam(bam)$records
 
     # Print the number of records
-    print(record_count)
-    print(record_count)
+    # print(record_count)
+
 
     header <- scanBamHeader(bamfile)
     print("nucleo header")
@@ -296,15 +296,15 @@ observeEvent(input$initQC, {
 
     # https://stackoverflow.com/questions/74131563/r-shiny-updatenumericinput-how-to-change-the-color-of-the-label-and-paste-a
 
-    updateNumericInput(session, "record_count_value", span(
-        paste0("Alignments to process(max ", record_count, ")"),
-        span(
-            class = "TOOLTIP1",
-            `data-toggle` = "tooltip", `data-placement` = "right",
-            title = "A tooltip",
-            icon("question-circle", "fa-solid")
-        )
-    ) |> as.character(), max = record_count)
+    # updateNumericInput(session, "record_count_value", span(
+    #     paste0("Alignments to process(max ", record_count, ")"),
+    #     span(
+    #         class = "TOOLTIP1",
+    #         `data-toggle` = "tooltip", `data-placement` = "right",
+    #         title = "A tooltip",
+    #         icon("question-circle", "fa-solid")
+    #     )
+    # ) |> as.character(), max = record_count)
     # updateNumericInput(session,"record_count_value", label=span(
     #                         paste0('Alignments to process(max ',record_count, ')'),
     #                         span(

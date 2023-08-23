@@ -9,7 +9,11 @@ tabItem(
         ),
         column(
             7,
-            withSpinner(plotOutput("plot_libcomplexity"))
+            wellPanel(
+            h5("Assessing sequencing depth and library complexity"),
+            withSpinner(plotOutput("plot_libcomplexity")),
+            h5("BAM files without removing duplicates are expected for estimating library complexity!")
+            )
       
             # actionButton("run_deseq2", "Run DESeq2",
             #              class = "btn btn-success",

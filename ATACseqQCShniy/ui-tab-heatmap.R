@@ -17,14 +17,10 @@ tabItem(
         
         column(
             7,
-            h3('Correlations for multiple samples'),
-            withSpinner(plotOutput("plot_heatmap"))
-      
-            # actionButton("run_deseq2", "Run DESeq2",
-            #              class = "btn btn-success",
-            #              style = "width:100%;height:60px;"
-            # ),
-            # plotOutput("plot")
+            wellPanel(
+                h5("Assessing similarity of replicates"),
+                withSpinner(plotOutput("plot_heatmap"))
+            )
         )
         ),
         conditionalPanel("!output.multiple_bamfiles",
