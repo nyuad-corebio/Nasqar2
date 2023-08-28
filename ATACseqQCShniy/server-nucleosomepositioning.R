@@ -448,3 +448,53 @@ output$plot_distanceDyad <- renderPlot({
     vp <- my_values$vp
     distanceDyad(vp, pch = 20, cex = .5)
 })
+
+
+
+output$bamfilesTable <- renderDataTable(
+    {
+        inputDataReactive()
+        files <- list.files(my_values$outPath, full.names = T, recursive = TRUE)
+        df <- data.frame(Filename=basename(files))
+        DT::datatable(df, options = list(scrollX = TRUE))
+    },
+    options = list(scrollX = TRUE)
+)
+
+  output$download_bamfiles_btn <- downloadHandler(
+    filename = function(){
+      paste("bamfiles_", Sys.Date(), ".zip", sep = "")
+    },
+    content = function(file){
+      
+      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
+      dir.create(temp_directory)
+      files <- list.files(my_values$outPath, full.names = T, recursive = TRUE)
+      files <- files[input$bamfilesTable_rows_selected]
+      print(files)
+      print(input$bamfilesTable_rows_selected)
+    #   reactiveValuesToList(to_download) %>%
+    #     imap(function(x,y){
+    #       if(!is.null(x)){
+    #         file_name <- glue("{y}_data.csv")
+    #         readr::write_csv(x, file.path(temp_directory, file_name))
+    #       }
+    #     })
+      
+      file.copy(files, temp_directory)
+    #   for(f in files){
+    #     file_copy(f, paste0(temp_directory, basename(f)))
+    #   }
+     
+      zip::zip(
+        zipfile = file,
+        files = dir(temp_directory),
+        root = temp_directory
+      )
+      
+      
+      
+    },
+    contentType = "application/zip"
+    
+  )

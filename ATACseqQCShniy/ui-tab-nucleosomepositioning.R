@@ -244,8 +244,19 @@ tabItem(
                         h3("Distance of potential nucleosome dyad and the linear model for V"),
                         withSpinner(plotOutput("plot_distanceDyad"))
                     )
-                )
-
+                ),
+                  column(
+                        10,
+                    tags$div(
+                        class = "BoxArea2",
+                        withSpinner(dataTableOutput("bamfilesTable"))
+                    ),
+                    downloadButton(
+                        outputId = "download_bamfiles_btn",
+                        label = "Download",
+                        icon = icon("file-download")
+                    )
+                  )
 
 
                 # actionButton("run_deseq2", "Run DESeq2",
