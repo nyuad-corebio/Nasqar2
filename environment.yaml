@@ -47,4 +47,5 @@ dependencies:
   - bioconductor-interactivecomplexheatmap
   - bioconductor-debrowser
   - bioconductor-rsamtools
+  - bioconductor-dada2
 
