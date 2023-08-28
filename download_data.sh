@@ -15,7 +15,7 @@ rm cookies.txt confirm.txt > /dev/null
 
 unzip data.zip
 
-
+cp -r data/dada2Shiny/www  dada2Shiny/
 cp -r data/deseq2shiny/www  deseq2shiny/
 cp -r data/ClusterProfShinyORA/www  ClusterProfShinyORA/
 cp -r data/ClusterProfShinyGSEA/www  ClusterProfShinyGSEA/

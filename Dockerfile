@@ -61,6 +61,7 @@ COPY deseq2shiny /opt/nasqar_build/deseq2shiny
 COPY GeneCountMerger /opt/nasqar_build/GeneCountMerger
 COPY NASQAR /opt/nasqar_build/NASQAR
 COPY ATACseqQCShniy /opt/nasqar_build/ATACseqQCShniy
+COPY dada2Shiny /opt/nasqar_build/dada2Shiny
 
 USER shiny
 WORKDIR /home/shiny
