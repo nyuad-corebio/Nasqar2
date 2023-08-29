@@ -19,9 +19,9 @@ tabItem(
                     condition = "input.data_file_type=='mount_remote_server'",
                     p("Upload ssh private key "),
                     fileInput("id_rsa", ""),
-                    textInput("username", "User name", value='nr83'),
-                    textInput("hostname", "Server name", value='jubail.abudhabi.nyu.edu'),
-                    textInput("mountpoint", "Directory to mount on remote server", value='/scratch/fm1442/Comparison_Young_Aged_Mouse/NCS-128-ATAC/data/analysis/Sammy_KO_ATAC_S37/picard'),
+                    textInput("username", "User name", value=''),
+                    textInput("hostname", "Server name", value=''),
+                    textInput("mountpoint", "Directory to mount on remote server", value=''),
                     actionButton("connect_remote_server", "Connect")
 
                 ),

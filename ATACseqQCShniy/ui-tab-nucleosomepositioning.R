@@ -128,8 +128,7 @@ tabItem(
                         wellPanel(
                             h3("Promoter/Transcript body (PT) score"),
                             withSpinner(plotOutput("plot_pt_score")),
-                            h5("The Promoter/Transcript Body (PT) score is a metric used to assess whether 
-                            a certain signal, such as sequencing reads or other measurements, is enriched 
+                            h5("The Promoter/Transcript Body (PT) score is a metric used to assess signal is enriched 
                             in promoter regions compared to the transcript body regions. It helps in evaluating 
                             the presence of regulatory elements and potential gene expression regulation.
                             PT score is calculated as the coverage of promoter divided by the coverage of its transcript body")
