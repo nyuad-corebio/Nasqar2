@@ -80,6 +80,13 @@ WORKDIR /opt/nasqar_build
 RUN wget https://github.com/UMMS-Biocore/debrowser/archive/refs/heads/master.zip
 RUN unzip master.zip
 
+RUN wget https://github.com/compbiomed/animalcules/archive/a24aced16297b12b92b63520b0046ddbae288322.zip 
+RUN unzip a24aced16297b12b92b63520b0046ddbae288322.zip 
+mv a24aced16297b12b92b63520b0046ddbae288322/inst/shiny animalcules
+RUN conda run -n nasqar_env R -e "BiocManager::install('compbiomed/animalcules')"
+
+
+
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 COPY shiny-server.sh /opt/nasqar_build/shiny-server.sh
 RUN mkdir /opt/nasqar_build/logs
