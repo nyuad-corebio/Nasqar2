@@ -48,6 +48,7 @@ RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Drerio.UCSC.danR
 RUN conda run -n nasqar_env R -e "BiocManager::install( c('BSgenome.Mmusculus.UCSC.mm10'), ask = FALSE, update = FALSE)"
 RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Mmusculus.UCSC.mm10.knownGene'), ask = FALSE, update = FALSE)"
 
+RUN conda run -n nasqar_env R -e "BiocManager::install('compbiomed/animalcules')"
 
 USER root
 
@@ -81,9 +82,14 @@ RUN wget https://github.com/UMMS-Biocore/debrowser/archive/refs/heads/master.zip
 RUN unzip master.zip
 
 RUN wget https://github.com/compbiomed/animalcules/archive/a24aced16297b12b92b63520b0046ddbae288322.zip 
+
+
 RUN unzip a24aced16297b12b92b63520b0046ddbae288322.zip 
-RUN mv a24aced16297b12b92b63520b0046ddbae288322/inst/shiny animalcules
-RUN conda run -n nasqar_env R -e "BiocManager::install('compbiomed/animalcules')"
+#WORKDIR /opt/nasqar_build/animalcules-a24aced16297b12b92b63520b0046ddbae288322
+#RUN conda run -n nasqar_env R -e "devtools::install('.')"
+#WORKDIR /opt/nasqar_build
+RUN mv animalcules-a24aced16297b12b92b63520b0046ddbae288322/inst/shiny animalcules
+RUN sed -i '1 i\library(animalcules)' animalcules/app.R
 
 
 
