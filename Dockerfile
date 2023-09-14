@@ -51,10 +51,7 @@ RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Mmusculus.UCSC.m
 RUN conda run -n nasqar_env R -e "BiocManager::install('compbiomed/animalcules')"
 
 
-RUN conda run -n nasqar_env R -e "BiocManager::install(c('BiocGenerics', 'DelayedArray', 'DelayedMatrixStats',
-                       'limma', 'lme4', 'S4Vectors', 'SingleCellExperiment',
-                       'SummarizedExperiment', 'batchelor', 'HDF5Array',
-                       'terra', 'ggrastr'))"
+RUN conda run -n nasqar_env R -e "BiocManager::install(c('BiocGenerics', 'DelayedArray', 'DelayedMatrixStats', 'limma', 'lme4', 'S4Vectors', 'SingleCellExperiment', 'SummarizedExperiment', 'batchelor', 'HDF5Array', 'terra', 'ggrastr'))"
           
 RUN conda run -n nasqar_env R -e "devtools::install_github('cole-trapnell-lab/monocle3')"
 RUN conda run -n nasqar_env R -e "remotes::install_github('satijalab/seurat', 'seurat5', quiet = TRUE)"
