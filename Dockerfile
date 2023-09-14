@@ -50,6 +50,15 @@ RUN conda run -n nasqar_env R -e "BiocManager::install( c('TxDb.Mmusculus.UCSC.m
 
 RUN conda run -n nasqar_env R -e "BiocManager::install('compbiomed/animalcules')"
 
+
+RUN conda run -n nasqar_env R -e "BiocManager::install(c('BiocGenerics', 'DelayedArray', 'DelayedMatrixStats',
+                       'limma', 'lme4', 'S4Vectors', 'SingleCellExperiment',
+                       'SummarizedExperiment', 'batchelor', 'HDF5Array',
+                       'terra', 'ggrastr'))"
+          
+RUN conda run -n nasqar_env R -e "devtools::install_github('cole-trapnell-lab/monocle3')"
+RUN conda run -n nasqar_env R -e "remotes::install_github('satijalab/seurat', 'seurat5', quiet = TRUE)"
+
 USER root
 
 RUN mkdir /opt/nasqar_build
@@ -80,6 +89,9 @@ RUN apt-get update \
 WORKDIR /opt/nasqar_build
 RUN wget https://github.com/UMMS-Biocore/debrowser/archive/refs/heads/master.zip
 RUN unzip master.zip
+
+RUN wget https://github.com/elliefewings/monocle3_shiny/archive/refs/heads/main.zip
+RUN unzip monocle3_shiny-main.zip
 
 RUN wget https://github.com/compbiomed/animalcules/archive/a24aced16297b12b92b63520b0046ddbae288322.zip 
 
