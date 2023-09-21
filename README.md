@@ -12,7 +12,7 @@ docker run -p 80:3232 nyuadcorebio/nasqarall:nasqar
 - If you run this service on a server, specify the (IP-address or hostname):80 on the browser.
 - If you run this service on a standalone machine (e.g. laptop), specify localhost:80 on the browser.
 
-To run Nasqar2 on another port. for eg:- 80 
+To run Nasqar2 on another port. for eg:- 8080
 
 ```
 docker run -p 8080:3232 nyuadcorebio/nasqarall:nasqar
